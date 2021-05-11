@@ -2,11 +2,10 @@
 layout: default
 title: Prueba de Poker
 ---
-<body class="h-100">
-    <div class="row h-100 m-3">
-        <div class="col-2">
-            <div class="row" style="min-height: 400px">
-                <textarea id="numeros_aleatorios" class="min-vh-50">
+<div class="row h-100 m-3">
+    <div class="col-2">
+        <div class="row" style="min-height: 400px">
+            <textarea id="numeros_aleatorios" class="min-vh-50">
               0.06141
               0.81792
               0.52953
@@ -38,259 +37,258 @@ title: Prueba de Poker
               0.73997
               0.09099      
             </textarea>
-            </div>
-
-            <div class="row mt-3">
-                <button class="btn btn-primary" onclick="ejecutarPrueba()">
-                    Ejecutar
-                </button>
-            </div>
         </div>
 
-        <div class="col-10" id="contenido" style="display: none">
-            <div class="card mt-2">
-                <div class="card-body">
-                    <table id="tablaPokerResumen">
-                        <thead>
-                            <tr>
-                                <th>Cagetegorias</th>
-                                <th>FO</th>
-                                <th>FE</th>
-                                <th>JI Poker</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
-                </div>
-            </div>
-
-            <div class="card mt-2">
-                <div class="card-body">
-                    <table class="table">
-                        <tr>
-                            <td><b>Total Categorias:</b></td>
-                            <td><b>Frecuencia Observada:</b></td>
-                            <td><b>Frecuencia Esperada:</b></td>
-                            <td><b>Ji Poker:</b></td>
-                        </tr>
-                        <tr>
-                            <td><span id="tc"></span></td>
-                            <td><span id="fo"></span></td>
-                            <td><span id="fe"></span></td>
-                            <td><span id="ji"></span></td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-
-            <div class="card mt-2">
-                <div class="card-body">
-                    <table class="table">
-                        <tr>
-                            <td><b>Ji- Póker:</b></td>
-                            <td><span id="ji_poker"></span></td>
-                        </tr>
-                        <tr>
-                            <td><b>Ji- Alpha:</b></td>
-                            <td><span id="ji_alpha"></span></td>
-                        </tr>
-                        <tr>
-                            <td><b>Desicion:</b></td>
-                            <td><span id="desicion"></span></td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-
-            <div class="card mt-2">
-                <div class="card-body">
-                    <table id="tablaPoker">
-                        <thead>
-                            <tr>
-                                <th>Numeros Aleatorios</th>
-                                <th>Procesado</th>
-                                <th>Categoria</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
-                </div>
-            </div>
+        <div class="row mt-3">
+            <button class="btn btn-primary" onclick="ejecutarPrueba()">
+                Ejecutar
+            </button>
         </div>
     </div>
 
-    <script>
-        var cant_decimales = 5;
+    <div class="col-10" id="contenido" style="display: none">
+        <div class="card mt-2">
+            <div class="card-body">
+                <table id="tablaPokerResumen">
+                    <thead>
+                        <tr>
+                            <th>Cagetegorias</th>
+                            <th>FO</th>
+                            <th>FE</th>
+                            <th>JI Poker</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
 
-        var probabilidad = {
-            TD: 0.3024,
-            "1P": 0.504,
-            "2P": 0.108,
-            "1T": 0.072,
-            FULL: 0.009,
-            POKER: 0.0045,
-            "1Q": 0.0001,
-        };
+        <div class="card mt-2">
+            <div class="card-body">
+                <table class="table">
+                    <tr>
+                        <td><b>Total Categorias:</b></td>
+                        <td><b>Frecuencia Observada:</b></td>
+                        <td><b>Frecuencia Esperada:</b></td>
+                        <td><b>Ji Poker:</b></td>
+                    </tr>
+                    <tr>
+                        <td><span id="tc"></span></td>
+                        <td><span id="fo"></span></td>
+                        <td><span id="fe"></span></td>
+                        <td><span id="ji"></span></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
 
-        var categorias = {
-            TD: 0,
-            "1P": 0,
-            "2P": 0,
-            "1T": 0,
-            FULL: 0,
-            POKER: 0,
-            "1Q": 0,
-        };
+        <div class="card mt-2">
+            <div class="card-body">
+                <table class="table">
+                    <tr>
+                        <td><b>Ji- Póker:</b></td>
+                        <td><span id="ji_poker"></span></td>
+                    </tr>
+                    <tr>
+                        <td><b>Ji- Alpha:</b></td>
+                        <td><span id="ji_alpha"></span></td>
+                    </tr>
+                    <tr>
+                        <td><b>Desicion:</b></td>
+                        <td><span id="desicion"></span></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
 
-        var total_fo = 0;
-        var total_fe = 0;
+        <div class="card mt-2">
+            <div class="card-body">
+                <table id="tablaPoker">
+                    <thead>
+                        <tr>
+                            <th>Numeros Aleatorios</th>
+                            <th>Procesado</th>
+                            <th>Categoria</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 
-        var procesarNumero = function (numero) {
-            var valor_recortado = numero.substring(2, cant_decimales + 2);
+<script>
+    var cant_decimales = 5;
 
-            if (valor_recortado.length < cant_decimales) {
-                var ceros_faltantes = cant_decimales - valor_recortado.length;
-                for (let k = 1; k <= ceros_faltantes; k++) {
-                    valor_recortado = valor_recortado + "0";
-                }
+    var probabilidad = {
+        TD: 0.3024,
+        "1P": 0.504,
+        "2P": 0.108,
+        "1T": 0.072,
+        FULL: 0.009,
+        POKER: 0.0045,
+        "1Q": 0.0001,
+    };
+
+    var categorias = {
+        TD: 0,
+        "1P": 0,
+        "2P": 0,
+        "1T": 0,
+        FULL: 0,
+        POKER: 0,
+        "1Q": 0,
+    };
+
+    var total_fo = 0;
+    var total_fe = 0;
+
+    var procesarNumero = function (numero) {
+        var valor_recortado = numero.substring(2, cant_decimales + 2);
+
+        if (valor_recortado.length < cant_decimales) {
+            var ceros_faltantes = cant_decimales - valor_recortado.length;
+            for (let k = 1; k <= ceros_faltantes; k++) {
+                valor_recortado = valor_recortado + "0";
             }
+        }
 
-            var conteos = {};
+        var conteos = {};
 
-            for (let i = 0; i < valor_recortado.length; i++) {
-                const element = valor_recortado[i];
+        for (let i = 0; i < valor_recortado.length; i++) {
+            const element = valor_recortado[i];
 
-                conteos[valor_recortado[i]] =
-                    valor_recortado.split(valor_recortado[i]).length - 1;
-            }
+            conteos[valor_recortado[i]] =
+                valor_recortado.split(valor_recortado[i]).length - 1;
+        }
 
-            var pares = 0;
-            var tercias = 0;
-            var poker = 0;
-            var quitillas = 0;
-            var diferentes = 0;
+        var pares = 0;
+        var tercias = 0;
+        var poker = 0;
+        var quitillas = 0;
+        var diferentes = 0;
 
-            for (const propiedad in conteos) {
-                if (conteos[propiedad] == 1) diferentes++;
-                if (conteos[propiedad] == 2) pares++;
-                if (conteos[propiedad] == 3) tercias++;
-                if (conteos[propiedad] == 4) poker++;
-                if (conteos[propiedad] == 5) quitillas++;
-            }
+        for (const propiedad in conteos) {
+            if (conteos[propiedad] == 1) diferentes++;
+            if (conteos[propiedad] == 2) pares++;
+            if (conteos[propiedad] == 3) tercias++;
+            if (conteos[propiedad] == 4) poker++;
+            if (conteos[propiedad] == 5) quitillas++;
+        }
 
-            if (poker == 1)
-                return {valor_procesado: valor_recortado, categoria: "POKER"};
+        if (poker == 1)
+            return {valor_procesado: valor_recortado, categoria: "POKER"};
 
-            if (quitillas == 1)
-                return {valor_procesado: valor_recortado, categoria: "1Q"};
+        if (quitillas == 1)
+            return {valor_procesado: valor_recortado, categoria: "1Q"};
 
-            if (diferentes == cant_decimales)
-                return {valor_procesado: valor_recortado, categoria: "TD"};
+        if (diferentes == cant_decimales)
+            return {valor_procesado: valor_recortado, categoria: "TD"};
 
-            if (pares == 2)
-                return {valor_procesado: valor_recortado, categoria: "2P"};
+        if (pares == 2)
+            return {valor_procesado: valor_recortado, categoria: "2P"};
 
-            if (pares == 1 && tercias == 1)
-                return {valor_procesado: valor_recortado, categoria: "FULL"};
+        if (pares == 1 && tercias == 1)
+            return {valor_procesado: valor_recortado, categoria: "FULL"};
 
-            if (pares == 1 && diferentes == 3)
-                return {valor_procesado: valor_recortado, categoria: "1P"};
+        if (pares == 1 && diferentes == 3)
+            return {valor_procesado: valor_recortado, categoria: "1P"};
 
-            if (tercias == 1 && diferentes == 2)
-                return {valor_procesado: valor_recortado, categoria: "1T"};
-        };
+        if (tercias == 1 && diferentes == 2)
+            return {valor_procesado: valor_recortado, categoria: "1T"};
+    };
 
-        var ejecutarPrueba = function () {
-            // reset variables
-            for (const categoria in categorias) {
-                categorias[categoria] = 0;
-            }
+    var ejecutarPrueba = function () {
+        // reset variables
+        for (const categoria in categorias) {
+            categorias[categoria] = 0;
+        }
 
-            total_fo = 0;
-            total_fe = 0;
+        total_fo = 0;
+        total_fe = 0;
 
-            $("#contenido").show();
+        $("#contenido").show();
 
-            var tablaNumeros = [];
+        var tablaNumeros = [];
 
-            $("#tablaPoker").DataTable().destroy();
-            $("#tablaPokerResumen").DataTable().destroy();
+        $("#tablaPoker").DataTable().destroy();
+        $("#tablaPokerResumen").DataTable().destroy();
 
-            var lineas = $("#numeros_aleatorios").val().split("\n");
+        var lineas = $("#numeros_aleatorios").val().split("\n");
 
-            var total_numeros = 0;
+        var total_numeros = 0;
 
-            for (var i = 0; i < lineas.length; i++) {
-                var valor = lineas[i].trim();
-                if (valor !== "") {
-                    total_numeros++;
+        for (var i = 0; i < lineas.length; i++) {
+            var valor = lineas[i].trim();
+            if (valor !== "") {
+                total_numeros++;
 
-                    var procesado = procesarNumero(valor);
+                var procesado = procesarNumero(valor);
 
-                    categorias[procesado.categoria] = categorias[procesado.categoria] + 1;
+                categorias[procesado.categoria] = categorias[procesado.categoria] + 1;
 
-                    tablaNumeros.push({
-                        numero_aleatorio: valor,
-                        numero_procesado: procesado.valor_procesado,
-                        categoria: procesado.categoria,
-                    });
-                }
-            }
-
-            tablaResumen = [];
-            for (const cagetoria in categorias) {
-                var fe = (probabilidad[cagetoria] * total_numeros).toFixed(4);
-                var ji = ((fe - categorias[cagetoria]) ** 2 / fe).toFixed(7);
-
-                tablaResumen.push({
-                    categoria: cagetoria,
-                    fo: categorias[cagetoria],
-                    fe: fe,
-                    ji: ji,
+                tablaNumeros.push({
+                    numero_aleatorio: valor,
+                    numero_procesado: procesado.valor_procesado,
+                    categoria: procesado.categoria,
                 });
-
-                // totales
-                total_fe = parseFloat(total_fe) + parseFloat(fe);
-                total_fo = parseFloat(total_fo) + parseFloat(ji);
             }
+        }
 
-            var ji_alpha = jStat.chisquare.inv(0.95, 6);
+        tablaResumen = [];
+        for (const cagetoria in categorias) {
+            var fe = (probabilidad[cagetoria] * total_numeros).toFixed(4);
+            var ji = ((fe - categorias[cagetoria]) ** 2 / fe).toFixed(7);
 
-            // muestro los totales en pantalla
-            $("#tc").text(7);
-            $("#fo").text(total_numeros);
-            $("#fe").text(total_fe.toFixed(2));
-            $("#ji").text(total_fo.toFixed(7));
-            $("#ji_poker").text(total_fo.toFixed(7));
-            $("#ji_alpha").text(ji_alpha.toFixed(8));
-            $("#desicion").text(
-                total_fo < ji_alpha ? "Se rechaza la Ho." : "Se acepta la Ho."
-            );
-
-            $("#tablaPokerResumen").DataTable({
-                paging: false,
-                bInfo: false,
-                bFilter: false,
-                ordering: false,
-                data: tablaResumen,
-                columns: [
-                    {data: "categoria"},
-                    {data: "fo"},
-                    {data: "fe"},
-                    {data: "ji"},
-                ],
+            tablaResumen.push({
+                categoria: cagetoria,
+                fo: categorias[cagetoria],
+                fe: fe,
+                ji: ji,
             });
 
-            $("#tablaPoker").DataTable({
-                paging: false,
-                ordering: false,
-                data: tablaNumeros,
-                columns: [
-                    {data: "numero_aleatorio"},
-                    {data: "numero_procesado"},
-                    {data: "categoria"},
-                ],
-            });
-        };
-    </script>
-</body>
+            // totales
+            total_fe = parseFloat(total_fe) + parseFloat(fe);
+            total_fo = parseFloat(total_fo) + parseFloat(ji);
+        }
+
+        var ji_alpha = jStat.chisquare.inv(0.95, 6);
+
+        // muestro los totales en pantalla
+        $("#tc").text(7);
+        $("#fo").text(total_numeros);
+        $("#fe").text(total_fe.toFixed(2));
+        $("#ji").text(total_fo.toFixed(7));
+        $("#ji_poker").text(total_fo.toFixed(7));
+        $("#ji_alpha").text(ji_alpha.toFixed(8));
+        $("#desicion").text(
+            total_fo < ji_alpha ? "Se rechaza la Ho." : "Se acepta la Ho."
+        );
+
+        $("#tablaPokerResumen").DataTable({
+            paging: false,
+            bInfo: false,
+            bFilter: false,
+            ordering: false,
+            data: tablaResumen,
+            columns: [
+                {data: "categoria"},
+                {data: "fo"},
+                {data: "fe"},
+                {data: "ji"},
+            ],
+        });
+
+        $("#tablaPoker").DataTable({
+            paging: false,
+            ordering: false,
+            data: tablaNumeros,
+            columns: [
+                {data: "numero_aleatorio"},
+                {data: "numero_procesado"},
+                {data: "categoria"},
+            ],
+        });
+    };
+</script>
