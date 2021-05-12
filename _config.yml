@@ -1,16 +1,9 @@
-# Site meta data
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 baseurl: "" # the subpath of your site, e.g. /blog
 title: "" # the name of your site, e.g. ACME Corp.
 
-# not used by plugin but by liquid template
-languages: ['en', 'es']
-
-# Build settings
 markdown: kramdown
 
-gems:
-- jekyll-language-plugin
-
-language_data: data.lang.%%
-# language_includes_dir: _i18n
+exclude:
+  - Gemfile
+  - Gemfile.lock
