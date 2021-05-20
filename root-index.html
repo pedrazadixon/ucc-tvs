@@ -1,15 +1,14 @@
 ---
-layout: default
 language: en
 subset: root
 permalink: /
 navigation: false
 ---
-
 <span id="span_url">{{ site.url }}</span>
-
 <script>
-  var url = document.getElementById("span_url").innerHTML; 
-  console.log(url + 'en');
-  window.location.replace(url + 'en')
+  document.addEventListener('DOMContentLoaded', function () {
+    var url = document.getElementById("span_url").innerHTML;
+    console.log(url + 'en');
+    window.location.replace(url + 'en');
+  });
 </script>
