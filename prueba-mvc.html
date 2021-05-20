@@ -1,0 +1,325 @@
+---
+layout: default
+title: Prueba de Poker
+---
+
+<div class="row h-100 m-3">
+    <div class="col-2">
+        <div class="row" style="min-height: 400px">
+            <textarea id="numeros_aleatorios" class="min-vh-50">
+                0.872
+                0.219
+                0.57
+                0.618
+                0.291
+                0.913
+                0.95
+                0.041
+                0.842
+                0.512
+                0.151
+                0.511
+                0.343
+                0.036
+                0.706
+                0.462
+                0.596
+                0.586
+                0.058
+                0.213
+                0.809
+                0.005
+                0.443
+                0.608
+                0.384
+                0.946
+                0.3
+                0.203
+                0.868
+                0.879              
+            </textarea>
+        </div>
+
+        <div class="row mt-3">
+            <button class="btn btn-primary" onclick="ejecutarPrueba()">
+                Ejecutar
+            </button>
+        </div>
+    </div>
+
+    <div class="col-10" id="contenido" style="display: none">
+        <div class="row m-3">
+            <div class="card mt-2 col-3 m-3">
+                <div class="card-body">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Ho</th>
+                                <td><span id="media_ho"></span></td>
+                            </tr>
+                            <tr>
+                                <th>H1</th>
+                                <td><span id="media_h1"></span></td>
+                            </tr>
+                            <tr>
+                                <th>Promedio</th>
+                                <td><span id="media_promedio"></span></td>
+                            </tr>
+                            <tr>
+                                <th>Cantidad numeros</th>
+                                <td><span id="media_cantidad_num"></span></td>
+                            </tr>
+                            <tr>
+                                <th>Alpha</th>
+                                <td><span id="media_alpha"></span></td>
+                            </tr>
+                            <tr>
+                                <th>Zalpha/2</th>
+                                <td><span id="media_zalpha"></span></td>
+                            </tr>
+                            <tr>
+                                <th>Lim Superior(prom)</th>
+                                <td><span id="media_lim_superior"></span></td>
+                            </tr>
+                            <tr>
+                                <th>Lim Inferior (prom)</th>
+                                <td><span id="media_lim_inferior"></span></td>
+                            </tr>
+                            <tr>
+                                <th>Decisión</th>
+                                <td><span id="media_decision"></span></td>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <div class="card mt-2 col-3 m-3">
+                <div class="card-body">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Ho</th>
+                                <td><span id="varianza_ho"></span></td>
+                            </tr>
+                            <tr>
+                                <th>H1</th>
+                                <td><span id="varianza_h1"></span></td>
+                            </tr>
+                            <tr>
+                                <th>Promedio</th>
+                                <td><span id="varianza_promedio"></span></td>
+                            </tr>
+                            <tr>
+                                <th>Cantidad numeros</th>
+                                <td><span id="varianza_cantidad_num"></span></td>
+                            </tr>
+                            <tr>
+                                <th>Alpha</th>
+                                <td><span id="varianza_alpha"></span></td>
+                            </tr>
+                            <tr>
+                                <th>Ji-Cuadrado(Alpha/2)</th>
+                                <td><span id="varianza_2jialpha"></span></td>
+                            </tr>
+                            <tr>
+                                <th>Ji-Cuadrado(1-alpha)</th>
+                                <td><span id="varianza_1jialpha"></span></td>
+                            </tr>
+                            <tr>
+                                <th>Lim Superior(prom)</th>
+                                <td><span id="varianza_lim_inferior"></span></td>
+                            </tr>
+                            <tr>
+                                <th>Lim Inferior (prom)</th>
+                                <td><span id="varianza_lim_superior"></span></td>
+                            </tr>
+                            <tr>
+                                <th>Decisión</th>
+                                <td><span id="varianza_decision"></span></td>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <div class="card mt-2 col-3 m-3">
+                <div class="card-body">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Datos</th>
+                                <td><span id="corridas_datos"></span></td>
+                            </tr>
+                            <tr>
+                                <th>Numero de corridas Co</th>
+                                <td><span id="corridas_num_corridas"></span></td>
+                            </tr>
+                            <tr>
+                                <th>Media de corridas</th>
+                                <td><span id="corridas_media"></span></td>
+                            </tr>
+                            <tr>
+                                <th>Varianza de corridas</th>
+                                <td><span id="corridas_varianza"></span></td>
+                            </tr>
+                            <tr>
+                                <th>Estadistico Zo</th>
+                                <td><span id="corridas_estadistico"></span></td>
+                            </tr>
+                            <tr>
+                                <th>Alpha</th>
+                                <td><span id="corridas_alpha"></span></td>
+                            </tr>
+                            <tr>
+                                <th>Z(alpha/2)</th>
+                                <td><span id="corridas_zalpha"></span></td>
+                            </tr>
+                            <tr>
+                                <th>Desicion</th>
+                                <td><span id="corridas_desicion"></span></td>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+    var ejecutarPrueba = function () {
+        var lineas = $("#numeros_aleatorios").val().split("\n");
+        var total_numeros = 0;
+        var procesado = [];
+
+        for (var i = 0; i < lineas.length; i++) {
+            var valor = lineas[i].trim();
+            if (valor !== "") {
+
+                procesado[total_numeros] = parseFloat(valor.replace(",", "."));
+                total_numeros++;
+            }
+        }
+        if (procesado.length == 0) return 0;
+
+        $("#contenido").show();
+
+        pruebaMedia(procesado);
+        pruebaVarianza(procesado);
+        pruebaCorridas(procesado);
+
+    }
+
+    var pruebaMedia = function (numeros) {
+
+        let sum = 0;
+
+        numeros.forEach(function (numero) {
+            sum += parseFloat(numero);
+        });
+
+        let avg = parseFloat(sum / numeros.length);
+
+        let zalpha = -1.959963985;
+
+        lim_superior = parseFloat(0.5 - zalpha * (1 / Math.sqrt(12 * numeros.length)))
+        lim_inferior = parseFloat(0.5 + zalpha * (1 / Math.sqrt(12 * numeros.length)))
+
+        console.log("lim_inferior: " + lim_inferior)
+        console.log("avg: " + avg)
+        console.log("lim_superior: " + lim_superior)
+
+        decision = (lim_inferior < avg && lim_superior > avg) ? "se acepta Ho" : "no se acepta Ho";
+
+
+
+        $("#media_ho").text("Media=0,5");
+        $("#media_h1").text("Media<>0,5");
+        $("#media_promedio").text(avg.toFixed(7));
+        $("#media_cantidad_num").text(numeros.length);
+        $("#media_alpha").text(0.05);
+        $("#media_zalpha").text(zalpha);
+        $("#media_lim_inferior").text(lim_inferior.toFixed(7));
+        $("#media_lim_superior").text(lim_superior.toFixed(7));
+        $("#media_decision").text(decision);
+
+    }
+
+    var pruebaVarianza = function (numeros) {
+        let sum = 0;
+
+        variance = jStat.variance(numeros, true).toFixed(10)
+
+        let alpha = 0.05;
+        let zalpha = -1.959963985;
+
+
+        jialpha_2 = jStat.chisquare.inv((alpha / 2), (numeros.length - 1))
+        jialpha_1 = jStat.chisquare.inv((1 - alpha), (numeros.length - 1))
+
+        lim_inferior = +jialpha_2 / (12 * (numeros.length - 1))
+        lim_superior = +jialpha_1 / (12 * (numeros.length - 1))
+
+        decision = (lim_inferior < variance && lim_superior > variance) ? "se acepta Ho" : "no se acepta Ho";
+
+        $("#varianza_ho").text("Varianza=1/12");
+        $("#varianza_h1").text("Varianza<>1/12");
+        $("#varianza_promedio").text(variance);
+        $("#varianza_cantidad_num").text(numeros.length);
+        $("#varianza_alpha").text(0.05);
+        $("#varianza_2jialpha").text(jialpha_2.toFixed(7));
+        $("#varianza_1jialpha").text(jialpha_1.toFixed(7));
+        $("#varianza_lim_inferior").text(lim_inferior.toFixed(7));
+        $("#varianza_lim_superior").text(lim_superior.toFixed(7));
+        $("#varianza_decision").text(decision);
+
+    }
+
+
+    var pruebaCorridas = function (numeros) {
+        corridasS = [];
+        corridas = [];
+
+        index = 0;
+        numeros.forEach(function (numero) {
+            corridasS[index] = (numeros[index] <= numeros[index + 1]) ? 1 : 0;
+            index = index + 1
+        });
+
+        index = 0;
+        corridasS.forEach(function (numero) {
+            corridas[index] = (corridasS[index] != corridasS[index + 1]) ? 1 : 0;
+            index = index + 1
+        });
+
+        num_corridas = (corridas.reduce((a, b) => a + b, 0) - 1)
+        media_corridas = ((2 * numeros.length) - 1) / 3
+        varianza_corridas = ((16 * numeros.length) - 29) / 90
+        estadisticazo = Math.abs((num_corridas - media_corridas) / Math.sqrt(varianza_corridas))
+        alpha = 0.05
+        zalpha = 1.959963985
+        decision = (zalpha > estadisticazo) ? "se acepta Ho" : "no se acepta Ho";
+
+
+
+        $("#corridas_datos").text(numeros.length);
+        $("#corridas_num_corridas").text(num_corridas);
+        $("#corridas_media").text(media_corridas.toFixed(7));
+        $("#corridas_varianza").text(varianza_corridas.toFixed(7));
+        $("#corridas_estadistico").text(estadisticazo.toFixed(7));
+        $("#corridas_alpha").text(alpha);
+        $("#corridas_zalpha").text(zalpha);
+        $("#corridas_desicion").text(decision);
+
+    }
+
+</script>
