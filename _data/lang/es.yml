@@ -1,6 +1,6 @@
 ---
 site:
-  title: título del sitio
+  title: UCC
   description: descripcion del sitio.
 lang:
   en: Ingles
@@ -9,5 +9,26 @@ layout:
   home: Inicio
   ramdom_numbers: Números aleatorios
   goodness_of_fit_test: Bondad de ajuste
+  uniform_distribution: Distribución uniforme
+  normal_distribution: Distribución normal
+  bernoulli_distribution: Distribución Bernoulli
+  beta_distribution: Distribución beta
+  random_numbers: Números aleatorios
+  precision: Cant. decimales
+  results: Resultados
+  run: Ejecutar
+  max_value: Valor max.
+  min_value: Valor min.
+  optional: Opcional
 index:
+  title: Inicio
   suggestion: Use el menu superior para seleccionar una opción.
+  footer_text: Técnicas de Validación y Simulación.
+aleatorios_bernoulli:
+  title: Distribución Bernoulli
+aleatorios_beta:
+  title: Distribución beta
+aleatorios_normal:
+  title: Distribución normal
+aleatorios_uniforme:
+  title: Distribución uniforme

@@ -3,7 +3,7 @@ layout: default
 languages:
 - en
 - es
-subset: aleatorios_normal
+subset: aleatorios_beta
 ---
 <div class="row h-100 m-3">
     <div class="col-sm-12 col-md-6 col-lg-2">
@@ -13,12 +13,12 @@ subset: aleatorios_normal
             <input type="number" class="form-control form-control-sm" id="cant-numeros" value="500" min="1" required />
         </div>
         <div class="mb-3">
-            <label class="form-label">mu</label>
-            <input type="number" class="form-control form-control-sm" id="val-mu" value="1" required />
+            <label class="form-label">alpha</label>
+            <input type="number" class="form-control form-control-sm" id="val-alpha" value="1" min="1" required />
         </div>
         <div class="mb-3">
-            <label class="form-label">sigma</label>
-            <input type="number" class="form-control form-control-sm" id="val-sigma" value="2" min="0" required />
+            <label class="form-label">beta</label>
+            <input type="number" class="form-control form-control-sm" id="val-beta" value="2" min="1" required />
         </div>
         <div class="mb-3">
             <label class="form-label">{% t 'layout.precision' %}</label>
@@ -55,10 +55,10 @@ subset: aleatorios_normal
             var cant_decimales = parseInt($('#cant-decimales').val().trim());
             var cant_aleatorios = parseInt($('#cant-numeros').val().trim());
 
-            var val_mu = parseFloat($('#val-mu').val().trim());
-            var val_sigma = parseFloat($('#val-sigma').val().trim());
+            var val_alpha = parseInt($('#val-alpha').val().trim());
+            var val_beta = parseInt($('#val-beta').val().trim());
 
-            randomArray = _lib_.unirand.normal(val_mu, val_sigma).distributionSync(cant_aleatorios);
+            randomArray = _lib_.unirand.beta(val_alpha, val_beta).distributionSync(cant_aleatorios);
 
             if (!isNaN(cant_decimales))
                 randomArray = randomArray.map(v => parseFloat(v.toFixed(cant_decimales)));
