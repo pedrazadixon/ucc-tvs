@@ -2,8 +2,13 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 baseurl: "" # the subpath of your site, e.g. /blog
 title: "" # the name of your site, e.g. ACME Corp.
 
+languages: ["en", "es"]
+
 markdown: kramdown
 
 exclude:
   - Gemfile
   - Gemfile.lock
+
+language_data: data.lang.%%
+# language_includes_dir: _i18n
