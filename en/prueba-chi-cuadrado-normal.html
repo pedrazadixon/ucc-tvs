@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="../assets/icon.png">
+
+  <title>Chi-squared test (normal) | UCC</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" />
+  <link rel="stylesheet" href="../assets/styles.css" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/underscore@1.13.1/underscore-umd-min.js"></script>
+  <script src="../assets/bundle.js"></script>
+  <script src="../assets/app.js"></script>
+</head>
+
+<body class="h-100">
+
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">UCC</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="numeros-aleatorios" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Ramdom numbers
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="numeros-aleatorios">
+              <li>
+                <a class="dropdown-item" href="aleatorios-uniforme.html">Uniform distribution</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="aleatorios-normal.html">Normal distribution</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="aleatorios-bernoulli.html">Bernoulli distribution</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="aleatorios-beta.html">Beta distribution</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="pruebas-bondad" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Goodness of fit
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="pruebas-bondad">
+              <li>
+                <a class="dropdown-item" href="prueba-mvc.html">Prueba de medias, varianza y corridas</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="prueba-series.html">Prueba de series</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="prueba-poker.html">Prueba de poker</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="prueba-chi-cuadrado-normal.html">Chi-squared test (normal)</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <a href="https://github.com/pedrazadixon/ucc-tvs/" target="_blank">
+          <i class="bi bi-github mx-3" style="color: white; font-size: 22px;"></i>
+        </a>
+
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              en
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="https://pedrazadixon.github.io/ucc-tvs/es/prueba-chi-cuadrado-normal.html">Español</a></li>
+              <li><a class="dropdown-item" href="https://pedrazadixon.github.io/ucc-tvs/en/prueba-chi-cuadrado-normal.html">English</a></li>
+            </ul>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+
+  <div class="row h-100 m-3">
+    <div class="col-2">
+
+        <!-- <div class="mb-3">
+            <label class="form-label">Nivel de confianza</label>
+            <input type="number" class="form-control form-control-sm" id="confianza" value="95" />
+        </div> -->
+
+        <div class="mb-3">
+            <label class="form-label">Data</label>
+            <textarea style="min-height: 400px" class="form-control form-control-sm" id="numeros_aleatorios">
+                44.90	51.70	55.70	58.40	59.70	61.10	62.00	60.70
+                45.60	52.10	56.20	58.90	60.30	61.60	62.50	61.20
+                46.30	52.60	56.70	59.50	60.80	62.20	63.10	61.70
+                47.20	53.20	57.20	60.00	61.30	62.70	63.60	62.20
+                48.10	53.70	57.80	60.50	61.90	63.20	64.10	62.80
+                49.00	54.30	58.40	61.20	62.50	63.90	64.70	63.30
+                49.90	55.10	59.10	61.90	63.20	64.50	65.20	63.90
+                50.80	55.80	59.90	62.60	63.90	65.30	65.80	64.40
+                51.70	56.50	60.60	63.10	64.70	66.00	66.50	65.10
+                52.60	57.20	61.30	63.70	65.40	66.70	67.20	65.80
+                53.50	58.00	61.90	64.20	66.10	67.50	67.90	66.60
+                54.40	58.70	62.50	64.80	66.80	68.20	68.60	67.30
+                55.30	59.40	63.00	65.30	67.50	68.90	69.40	68.00
+                56.10	60.10	63.50	66.00	68.20	69.60	70.00	67.70
+                57.00	60.80	64.10	66.70	68.90	70.30	70.80	69.40
+                57.90	61.60	64.60	67.30	69.70	71.10	71.50	70.20
+                58.80	62.20	65.10	67.90	70.40	72.00	72.40	71.10
+                59.70	62.90	65.70	68.40	71.10	72.90	73.30	72.00
+                60.60	63.60	66.40	69.10	71.80	73.60	74.10	72.70
+                61.50	64.30	67.10	69.80	72.50	74.30	74.80	73.40
+                62.40	65.10	67.80	70.50	73.20	75.00	75.50	74.20
+                63.30	65.80	68.50	71.20	73.90	75.80	76.20	75.10
+                64.20	66.50	69.20	71.90	74.70	76.50	76.90	76.00
+                64.90	67.20	69.90	72.60	75.50	77.30	77.80	76.90
+                65.70	67.90	70.60	73.40	76.50	78.20	78.70	77.80
+                66.40	68.60	71.40	74.10	77.30	79.10	79.60	78.70
+                67.10	69.30	72.10	74.80	78.00	79.80	80.50	79.50
+                67.80	70.10	72.80	75.50	78.70	80.50	81.30	80.40
+                68.50	70.90	73.60	76.30	79.50	81.30	82.20	81.30
+                69.20	71.80	74.50	77.20	80.40	82.20	83.10	82.20
+                70.00	72.70	75.40	78.10	81.30	83.10	84.00	83.10
+                70.90	73.40	76.10	79.00	82.00	83.80	84.70	84.00
+                71.70	74.10	76.80	79.90	82.70	84.50	85.40	84.90
+                72.60	74.80	77.50	80.80	83.50	85.30	86.20	85.80
+                73.50	75.50	78.20	81.70	84.40	86.20	87.10	86.70
+                74.40	76.20	79.90	82.60	85.30	87.10	88.00	87.60
+                75.30	76.90	79.70	83.30	86.20	88.00	88.90	88.50
+                76.20	77.70	80.40	84.00	87.10	88.90	89.80	89.40
+                77.10	78.40	81.00	84.70	88.10	89.90	90.80	90.30                
+        </textarea>
+        </div>
+
+        <div class="row mt-3 px-3">
+            <button class="btn btn-primary" onclick="ejecutarPrueba()">
+                Run
+            </button>
+        </div>
+    </div>
+
+    <div class="col-10" style="display: block">
+        <div class="row">
+            <div class="col-12">
+                <div class="card mt-2">
+                    <div class="card-body">
+                        <table class="table table-sm" id="intervalos"></table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="mb-3">
+                    <div id="container-fo" style="height: 350px; margin: 0 auto"></div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="mb-3">
+                    <div id="container-fe" style="height: 350px; margin: 0 auto"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<script>
+
+    var matriz = [];
+    var t_resultados = [];
+
+    var ejecutarPrueba = function () {
+
+        lineas = $("#numeros_aleatorios").val().split(/\t| |\n/);
+
+        matriz = [];
+
+        lineas.forEach(function (el) {
+            if (!isNaN(parseFloat(el.trim())))
+                matriz.push(parseFloat(el.trim()));
+        });
+
+        var total_datos = matriz.length;
+        var regla_de_sturges = 1 + 3.322 * Math.log10(312);
+        var intervalos = Math.floor(regla_de_sturges);
+        var minimo = Math.min(...matriz);
+        var maximo = Math.max(...matriz);
+        var rango = maximo - minimo;
+        var amplitud_del_intervalo = rango / regla_de_sturges;
+        var media = jStat.mean(matriz);
+        var desviacion_estandar = jStat.stdev(matriz);
+
+        // calculo freciencas observadas para cada intervalo
+        t_resultados = [];
+        var intervalo_actual_min = minimo;
+        var intervalo_actual_max = minimo + amplitud_del_intervalo;
+        for (let intervalo = 0; intervalo < intervalos; intervalo++) {
+            t_resultados[intervalo] = {};
+            t_resultados[intervalo].lim_inf = intervalo_actual_min
+            t_resultados[intervalo].lim_sup = intervalo + 1 == intervalos ? maximo : intervalo_actual_max;
+            t_resultados[intervalo].fo = 0;
+            if (intervalo + 1 != intervalos) {
+                // primeros intervalos
+                for (let numero = 0; numero < matriz.length; numero++) {
+                    if (matriz[numero] >= intervalo_actual_min && matriz[numero] < intervalo_actual_max)
+                        t_resultados[intervalo].fo = t_resultados[intervalo].fo + 1;
+                }
+            } else {
+                // ultimo intervalo
+                for (let numero = 0; numero < matriz.length; numero++) {
+                    if (matriz[numero] >= intervalo_actual_min && matriz[numero] <= maximo)
+                        t_resultados[intervalo].fo = t_resultados[intervalo].fo + 1;
+                }
+            }
+            intervalo_actual_min = intervalo_actual_min + amplitud_del_intervalo;
+            intervalo_actual_max = intervalo_actual_max + amplitud_del_intervalo;
+        }
+
+
+        for (let intervalo = 0; intervalo < t_resultados.length; intervalo++) {
+            t_resultados[intervalo].prob_lim_sup = jStat.normal.cdf(t_resultados[intervalo].lim_sup, media, desviacion_estandar);
+            t_resultados[intervalo].prob_lim_inf = jStat.normal.cdf(t_resultados[intervalo].lim_inf, media, desviacion_estandar);
+            t_resultados[intervalo].prob_intervalo = t_resultados[intervalo].prob_lim_sup - t_resultados[intervalo].prob_lim_inf;
+            t_resultados[intervalo].fe = t_resultados[intervalo].prob_intervalo * total_datos;
+            t_resultados[intervalo].ji_cuadrado = ((t_resultados[intervalo].fo - t_resultados[intervalo].fe) ** 2) / t_resultados[intervalo].fe;
+        }
+
+        // INTERFAZ GRAFICA
+        $("#intervalos").empty();
+        var table = document.getElementById("intervalos");
+        var row = table.insertRow(0);
+        var cell0 = row.insertCell(0);
+        var cell1 = row.insertCell(1);
+        var cell2 = row.insertCell(2);
+        var cell3 = row.insertCell(3);
+        var cell4 = row.insertCell(4);
+        var cell5 = row.insertCell(5);
+        var cell6 = row.insertCell(6);
+        var cell7 = row.insertCell(7);
+        var cell8 = row.insertCell(8);
+        cell0.innerHTML = "<b>Cat.</b>";
+        cell1.innerHTML = "<b>Lim. Inf.</b>";
+        cell2.innerHTML = "<b>Lim. Sup.</b>";
+        cell3.innerHTML = "<b>FO</b>";
+        cell4.innerHTML = "<b>P(LS)</b>";
+        cell5.innerHTML = "<b>P(LI)</b>";
+        cell6.innerHTML = "<b>P(Cat.)</b>";
+        cell7.innerHTML = "<b>FE</b>";
+        cell8.innerHTML = "<b>Ji-cuadrado</b>";
+        for (let i = 0; i < t_resultados.length; i++) {
+            var row = table.insertRow(i + 1);
+            var cell0 = row.insertCell(0);
+            var cell1 = row.insertCell(1);
+            var cell2 = row.insertCell(2);
+            var cell3 = row.insertCell(3);
+            var cell4 = row.insertCell(4);
+            var cell5 = row.insertCell(5);
+            var cell6 = row.insertCell(6);
+            var cell7 = row.insertCell(7);
+            var cell8 = row.insertCell(8);
+            cell0.innerHTML = i + 1;
+            cell1.innerHTML = t_resultados[i].lim_inf.toFixed(8);
+            cell2.innerHTML = t_resultados[i].lim_sup.toFixed(8);
+            cell3.innerHTML = t_resultados[i].fo;
+            cell4.innerHTML = t_resultados[i].prob_lim_sup.toFixed(8);
+            cell5.innerHTML = t_resultados[i].prob_lim_inf.toFixed(8);
+            cell6.innerHTML = t_resultados[i].prob_intervalo.toFixed(8);
+            cell7.innerHTML = t_resultados[i].fe.toFixed(8);
+            cell8.innerHTML = t_resultados[i].ji_cuadrado.toFixed(8);
+        }
+
+
+        // HISTOGRAMAS
+        var h_categories = [];
+        t_resultados.forEach((v, i) => h_categories.push(i + 1))
+
+        var h_fo_data = [];
+        t_resultados.forEach((v, i) => h_fo_data.push(v.fo))
+
+        var h_fe_data = [];
+        t_resultados.forEach((v, i) => h_fe_data.push(v.fe))
+
+        graficarChiCuadrado('container-fo', 'Hist. FO', h_categories, h_fo_data);
+        graficarChiCuadrado('container-fe', 'Hist. FE', h_categories, h_fe_data);
+
+    }
+
+
+</script>
+
+  <footer class="footer bg-dark">
+    <div class="footer-div">
+      <span class="text-muted">Validation and Simulation Techniques. - 2021</span>
+    </div>
+  </footer>
+
+</body>
+
+</html>
