@@ -265,6 +265,12 @@ subset: index
                     </table>
                 </div>
             </div>
+
+            <div class="col-sm-12 col-md-6 col-lg-7">
+                <div class="mb-3">
+                    <div id="container" style="height: 400px; margin: 0 auto"></div>
+                </div>
+            </div>
         </div>
 
     </div>
@@ -293,6 +299,7 @@ subset: index
         pruebaMedia(procesado);
         pruebaVarianza(procesado);
         pruebaCorridas(procesado);
+        graficarAlatorios('container', procesado);
 
     }
 
@@ -381,5 +388,8 @@ subset: index
         $("#corridas_desicion").text(decision);
 
     }
+
+
+
 
 </script>
