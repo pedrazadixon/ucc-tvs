@@ -75,3 +75,45 @@ var graficarAlatorios = function (container, randomArray) {
     ],
   });
 };
+
+var graficarChiCuadrado = function (container, title, cats, dats) {
+  if (grafica) grafica.destroy();
+
+  var grafica = Highcharts.chart(container, {
+    credits: {
+      enabled: false,
+    },
+    chart: {
+      type: "column",
+    },
+    title: {
+      text: title,
+    },
+    subtitle: {
+      text: "",
+    },
+    xAxis: {
+      categories: cats,
+    },
+    yAxis: {
+      min: 0,
+      title: {
+        text: "",
+      },
+    },
+    plotOptions: {
+      column: {
+        pointPadding: 0,
+        borderWidth: 1,
+        groupPadding: 0,
+        shadow: false,
+      },
+    },
+    series: [
+      {
+        showInLegend: false,
+        data: dats,
+      },
+    ],
+  });
+};

@@ -20,6 +20,8 @@ layout:
   max_value: Max. value
   min_value: Min. value
   optional: Optional
+  chi_squared_test: Chi-squared test (normal)
+  data: Data
 index:
   title: Home
   suggestion: Use the top menu to select an option.
@@ -32,3 +34,5 @@ aleatorios_normal:
   title: Normal distribution
 aleatorios_uniforme:
   title: Uniform distribution
+prueba_chi_cuadrado_normal:
+  title: Chi-squared test (normal)
