@@ -204,7 +204,7 @@
         });
 
         var total_datos = matriz.length;
-        var regla_de_sturges = 1 + 3.322 * Math.log10(312);
+        var regla_de_sturges = 1 + 3.322 * Math.log10(total_datos);
         var intervalos = Math.floor(regla_de_sturges);
         var minimo = Math.min(...matriz);
         var maximo = Math.max(...matriz);
