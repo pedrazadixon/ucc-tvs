@@ -1,0 +1,72 @@
+---
+layout: default
+languages:
+- en
+- es
+subset: aleatorios_gamma
+---
+<div class="row h-100 m-3">
+    <div class="col-sm-12 col-md-6 col-lg-2">
+
+        <div class="mb-3">
+            <label class="form-label">{% t 'layout.random_numbers' %}</label>
+            <input type="number" class="form-control form-control-sm" id="cant-numeros" value="500" min="1" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">alpha</label>
+            <input type="number" class="form-control form-control-sm" id="val-alpha" value="2" min="1" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">beta</label>
+            <input type="number" class="form-control form-control-sm" id="val-beta" value="0.5" min="1" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">{% t 'layout.precision' %}</label>
+            <input type="number" class="form-control form-control-sm" id="cant-decimales" value="" min="0"
+                placeholder="{% t 'layout.optional' %}" />
+        </div>
+        <div class="row mt-3 px-3">
+            <button class="btn btn-primary" onclick="generarAleatorios()">
+                {% t 'layout.run' %}
+            </button>
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-md-6 col-lg-3">
+        <div class="mb-3">
+            <label class="form-label">{% t 'layout.results' %}</label>
+            <textarea style="min-height: 400px" class="form-control form-control-sm"
+                id="numeros_aleatorios"> </textarea>
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-md-6 col-lg-7">
+        <div class="mb-3">
+            <div id="container" style="height: 400px; margin: 0 auto"></div>
+        </div>
+    </div>
+
+    <script>
+
+        var randomArray = [];
+
+        var generarAleatorios = function () {
+
+            var cant_decimales = parseInt($('#cant-decimales').val().trim());
+            var cant_aleatorios = parseInt($('#cant-numeros').val().trim());
+
+            var val_alpha = parseFloat($('#val-alpha').val().trim());
+            var val_beta = parseFloat($('#val-beta').val().trim());
+
+            randomArray = _lib_.unirand.gamma(val_alpha, val_beta).distributionSync(cant_aleatorios);
+
+            if (!isNaN(cant_decimales))
+                randomArray = randomArray.map(v => parseFloat(v.toFixed(cant_decimales)));
+
+            $('#numeros_aleatorios').text(randomArray.join("\n"));
+            graficarAlatorios('container', randomArray);
+        }
+
+    </script>
+
+</div>

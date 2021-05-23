@@ -22,6 +22,15 @@ layout:
   optional: Optional
   chi_squared_test: Chi-squared test (normal)
   data: Data
+  binomial_distribution: Binomial distribution
+  chi_square_distribution: Chi Square distribution
+  chi_distribution: Chi distribution
+  exponential_distribution: Exponential distribution
+  gamma_distribution: Gamma distribution
+  pareto_distribution: Pareto distribution
+  poisson_distribution: Poisson distribution
+  triangular_distribution: Triangular distribution
+
 index:
   title: Home
   suggestion: Use the top menu to select an option.
@@ -36,3 +45,19 @@ aleatorios_uniforme:
   title: Uniform distribution
 prueba_chi_cuadrado_normal:
   title: Chi-squared test (normal)
+aleatorios_binomial:
+  title: Binomial
+aleatorios_chi_cuadrado:
+  title: Chi Squared
+aleatorios_chi:
+  title: Chi
+aleatorios_exponencial:
+  title: Exponencial
+aleatorios_gamma:
+  title: Gamma
+aleatorios_pareto:
+  title: Pareto
+aleatorios_poisson:
+  title: Poisson
+aleatorios_triangular:
+  title: Triangular
