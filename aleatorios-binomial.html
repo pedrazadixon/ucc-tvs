@@ -64,8 +64,8 @@ subset: aleatorios_binomial
             var cant_decimales = parseInt($('#cant-decimales').val().trim());
             var cant_aleatorios = parseInt($('#cant-numeros').val().trim());
 
-            var val_n = parseFloat($('#val-mu').val().trim());
-            var val_p = parseFloat($('#val-sigma').val().trim());
+            var val_n = parseFloat($('#val-n').val().trim());
+            var val_p = parseFloat($('#val-p').val().trim());
 
             randomArray = _lib_.unirand.binomial(val_n, val_p).distributionSync(cant_aleatorios);
 
