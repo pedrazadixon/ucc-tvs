@@ -3,12 +3,12 @@ layout: default
 languages:
 - en
 - es
-subset: aleatorios_uniforme
+subset: aleatorios_poisson
 ---
 <div class="row h-100 m-3">
 
     <div class="col-12">
-        <h5>{% t 'layout.sub_title_prepend' %} <b>{% t 'layout.uniform_distribution' %}</b></h5>
+        <h5>{% t 'layout.sub_title_prepend' %} <b>{% t 'layout.poisson_distribution' %}</b></h5>
         <p>{% t 'sumary' %}</p>
     </div>
 
@@ -21,12 +21,8 @@ subset: aleatorios_uniforme
             <input type="number" class="form-control form-control-sm" id="cant-numeros" value="500" min="1" required />
         </div>
         <div class="mb-3">
-            <label class="form-label">{% t 'layout.min_value' %}</label>
-            <input type="number" class="form-control form-control-sm" id="val-minimo" value="0" step="0.1" required />
-        </div>
-        <div class="mb-3">
-            <label class="form-label">{% t 'layout.max_value' %}</label>
-            <input type="number" class="form-control form-control-sm" id="val-maximo" value="1" step="0.1" required />
+            <label class="form-label">lambda</label>
+            <input type="number" class="form-control form-control-sm" id="val-lambda" value="4" min="0" required />
         </div>
         <div class="mb-3">
             <label class="form-label">{% t 'layout.precision' %}</label>
@@ -63,10 +59,9 @@ subset: aleatorios_uniforme
             var cant_decimales = parseInt($('#cant-decimales').val().trim());
             var cant_aleatorios = parseInt($('#cant-numeros').val().trim());
 
-            var val_min = parseFloat($('#val-minimo').val().trim());
-            var val_max = parseFloat($('#val-maximo').val().trim());
+            var val_lambda = parseInt($('#val-lambda').val().trim());
 
-            randomArray = _lib_.unirand.uniform(val_min, val_max).distributionSync(cant_aleatorios);
+            randomArray = _lib_.unirand.poisson(val_lambda).distributionSync(cant_aleatorios);
 
             if (!isNaN(cant_decimales))
                 randomArray = randomArray.map(v => parseFloat(v.toFixed(cant_decimales)));

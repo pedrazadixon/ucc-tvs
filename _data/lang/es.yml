@@ -9,10 +9,6 @@ layout:
   home: Inicio
   ramdom_numbers: Números aleatorios
   goodness_of_fit_test: Bondad de ajuste
-  uniform_distribution: Distribución uniforme
-  normal_distribution: Distribución normal
-  bernoulli_distribution: Distribución Bernoulli
-  beta_distribution: Distribución beta
   random_numbers: Números aleatorios
   precision: Cant. decimales
   results: Resultados
@@ -22,17 +18,58 @@ layout:
   optional: Opcional
   chi_squared_test: Chi-cuadrado (normal)
   data: Datos
+  uniform_distribution: Distribución uniforme
+  normal_distribution: Distribución normal
+  bernoulli_distribution: Distribución Bernoulli
+  beta_distribution: Distribución beta
+  binomial_distribution: Distribución binomial
+  chi_square_distribution: Distribución chi cuadrado
+  chi_distribution: Distribución chi
+  exponential_distribution: Distribución exponencial
+  gamma_distribution: Distribución gamma
+  pareto_distribution: Distribución pareto
+  poisson_distribution: Distribución poisson
+  triangular_distribution: Distribución triangular
+  sub_title_prepend: Generador de números aleatorios para una
 index:
   title: Inicio
   suggestion: Use el menu superior para seleccionar una opción.
   footer_text: Técnicas de Validación y Simulación.
 aleatorios_bernoulli:
   title: Distribución Bernoulli
+  sumary: La distribución Bernoulli (o distribución dicotómica), nombrada así por el matemático suizo Jacob Bernoulli, es una distribución de probabilidad discreta, que toma valor 1 para la probabilidad de éxito p y valor 0 para la probabilidad de fracaso q=1-p.
 aleatorios_beta:
   title: Distribución beta
+  sumary: Es una familia de distribuciones de probabilidad continuas definidas en el intervalo (0,1) parametrizada por dos parámetros positivos de forma, denotados por α y β , que aparecen como exponentes de la variable aleatoria y controlan la forma de la distribución.
 aleatorios_normal:
   title: Distribución normal
+  sumary: También conocida como distribución de Gauss, distribución gaussiana o distribución de Laplace-Gauss, a una de las distribuciones de probabilidad de variable continua que con más frecuencia aparece en estadística y en la teoría de probabilidades.llama distribución normal, distribución de Gauss, distribución gaussiana o distribución de Laplace-Gauss, a una de las distribuciones de probabilidad de variable continua que con más frecuencia aparece en estadística y en la teoría de probabilidades.
 aleatorios_uniforme:
   title: Distribución uniforme
+  sumary: Es una familia de distribuciones de probabilidad para variables aleatorias continuas, tales que para cada miembro de la familia, todos los intervalos de igual longitud en la distribución en su rango son igualmente probables.
 prueba_chi_cuadrado_normal:
   title: Prueba chi-cuadrado (normal)
+aleatorios_binomial:
+  title: Binomial
+  sumary: También conocida como distribución binómica es una distribución de probabilidad discreta que cuenta el número de éxitos en una secuencia de n ensayos de Bernoulli independientes entre sí con una probabilidad fija p de ocurrencia de éxito entre los ensayos.
+aleatorios_chi_cuadrado:
+  title: Chi Squared
+  sumary: También llamada distribución de Pearson o distribución χ2 con k e N grados de libertad es la distribución de la suma del cuadrado de k variables aleatorias independientes con distribución normal estándar. La distribución chi cuadrada es un caso especial de la distribución gamma y es una de las distribuciones de probabilidad más usadas en Inferencia Estadística, principalmente en pruebas de hipótesis y en la construcción de intervalos de confianza.
+aleatorios_chi:
+  title: Chi
+  sumary: También llamada distribución χ es un tipo de distribución de probabilidad continua. Es la distribución de la raíz cuadrada positiva de la suma de los cuadrados de un conjunto de variables aleatorias independientes, cada una siguiendo un distribución normal estándar o, de manera equivalente, la distribución de la distancia euclidiana de las variables aleatorias desde el origen.
+aleatorios_exponencial:
+  title: Exponencial
+  sumary: Es una distribución continua que se utiliza para modelar tiempos de espera para la ocurrencia de un cierto evento. Esta distribución al igual que la distribución geométrica tiene la propiedad de pérdida de memoria. La distribución exponencial es un caso particular de la distribución gamma.
+aleatorios_gamma:
+  title: Gamma
+  sumary: Es una distribución con dos parámetros que pertenece a las distribuciones de probabilidad continuas. La distribución exponencial, distribución de Erlang y la distribución χ² son casos particulares de la distribución gamma.
+aleatorios_pareto:
+  title: Pareto
+  sumary: Es una distribución de probabilidad continua con dos parámetros, que tiene aplicación en disciplinas como la sociología, geofísica y economía.1​. Fue formulada por el ingeniero civil, economista y sociólogo Vilfredo Pareto, aunque en ciertas áreas de estudio se hace referencia a la ley de Bradford.
+aleatorios_poisson:
+  title: Poisson
+  sumary: Es una distribución de probabilidad discreta que expresa, a partir de una frecuencia de ocurrencia media, la probabilidad de que ocurra un determinado número de eventos durante cierto período de tiempo. Concretamente, se especializa en la probabilidad de ocurrencia de sucesos con probabilidades muy pequeñas, o sucesos raros.
+aleatorios_triangular:
+  title: Triangular
+  sumary: Es la distribución de probabilidad continua que tiene un valor mínimo a, un valor máximo b y una moda c, de modo que la función de densidad de probabilidad es cero para los extremos (a y b), y afín entre cada extremo y la moda, por lo que su gráfico es un triángulo.

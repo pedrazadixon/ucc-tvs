@@ -9,10 +9,6 @@ layout:
   home: Home
   ramdom_numbers: Ramdom numbers
   goodness_of_fit_test: Goodness of fit
-  uniform_distribution: Uniform distribution
-  normal_distribution: Normal distribution
-  bernoulli_distribution: Bernoulli distribution
-  beta_distribution: Beta distribution
   random_numbers: Random numbers
   precision: Precision
   results: Results
@@ -22,17 +18,58 @@ layout:
   optional: Optional
   chi_squared_test: Chi-squared test (normal)
   data: Data
+  uniform_distribution: Uniform distribution
+  normal_distribution: Normal distribution
+  bernoulli_distribution: Bernoulli distribution
+  beta_distribution: Beta distribution
+  binomial_distribution: Binomial distribution
+  chi_square_distribution: Chi Square distribution
+  chi_distribution: Chi distribution
+  exponential_distribution: Exponential distribution
+  gamma_distribution: Gamma distribution
+  pareto_distribution: Pareto distribution
+  poisson_distribution: Poisson distribution
+  triangular_distribution: Triangular distribution
+  sub_title_prepend: Random number generator for a
 index:
   title: Home
   suggestion: Use the top menu to select an option.
   footer_text: Validation and Simulation Techniques.
 aleatorios_bernoulli:
   title: Bernoulli distribution
+  sumary: Bernoulli distribution, named after Swiss mathematician Jacob Bernoulli, is the discrete probability distribution of a random variable which takes the value 1 with probability p and the value 0 with probability q=1-p.
 aleatorios_beta:
   title: Beta distribution
+  sumary: Is a family of continuous probability distributions defined on the interval [0, 1] parameterized by two positive shape parameters, denoted by α and β, that appear as exponents of the random variable and control the shape of the distribution. The generalization to multiple variables is called a Dirichlet distribution.
 aleatorios_normal:
   title: Normal distribution
+  sumary: In probability theory, a normal (or Gaussian or Gauss or Laplace–Gauss) distribution is a type of continuous probability distribution for a real-valued random variable.
 aleatorios_uniforme:
   title: Uniform distribution
+  sumary: The continuous uniform distribution or rectangular distribution is a family of symmetric probability distributions. The distribution describes an experiment where there is an arbitrary outcome that lies between certain bounds.
 prueba_chi_cuadrado_normal:
   title: Chi-squared test (normal)
+aleatorios_binomial:
+  title: Binomial
+  sumary: The binomial distribution with parameters n and p is the discrete probability distribution of the number of successes in a sequence of n independent experiments, each asking a yes–no question, and each with its own Boolean-valued outcome success (with probability p) or failure (with probability q = 1 − p)
+aleatorios_chi_cuadrado:
+  title: Chi Squared
+  sumary: Chi-squared or χ2-distribution with k degrees of freedom is the distribution of a sum of the squares of k independent standard normal random variables. The chi-square distribution is a special case of the gamma distribution and is one of the most widely used probability distributions in inferential statistics, notably in hypothesis testing and in construction of confidence intervals.
+aleatorios_chi:
+  title: Chi
+  sumary: Is a continuous probability distribution. It is the distribution of the positive square root of the sum of squares of a set of independent random variables each following a standard normal distribution, or equivalently, the distribution of the Euclidean distance of the random variables from the origin. It is thus related to the chi-squared distribution by describing the distribution of the positive square roots of a variable obeying a chi-squared distribution.
+aleatorios_exponencial:
+  title: Exponencial
+  sumary: Is the probability distribution of the time between events in a Poisson point process, i.e., a process in which events occur continuously and independently at a constant average rate. It is a particular case of the gamma distribution. It is the continuous analogue of the geometric distribution, and it has the key property of being memoryless.
+aleatorios_gamma:
+  title: Gamma
+  sumary: The gamma distribution is a two-parameter family of continuous probability distributions. The exponential distribution, Erlang distribution, and chi-square distribution are special cases of the gamma distribution.
+aleatorios_pareto:
+  title: Pareto
+  sumary: The Pareto distribution, named after the Italian civil engineer, economist, and sociologist Vilfredo Pareto, is a power-law probability distribution that is used in description of social, quality control, scientific, geophysical, actuarial, and many other types of observable phenomena.
+aleatorios_poisson:
+  title: Poisson
+  sumary: Named after French mathematician Denis Poisson, is a discrete probability distribution that expresses the probability of a given number of events occurring in a fixed interval of time or space if these events occur with a known constant mean rate and independently of the time since the last event.
+aleatorios_triangular:
+  title: Triangular
+  sumary: In probability theory and statistics, the triangular distribution is a continuous probability distribution with lower limit a, upper limit b and mode c, where a < b and a ≤ c ≤ b.
