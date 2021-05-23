@@ -406,8 +406,7 @@ subset: prueba_chi_cuadrado_normal
                 acom_fe = acom_fe + t_resultados[intervalo].fe;
             }
         }
-        t_resultados[acom_intervalo].fo = acom_fo;
-        t_resultados[acom_intervalo].fe = acom_fe;
+        
 
         acom_estadistico = ((acom_fo - acom_fe) ** 2) / acom_fe;
         t_resultados[acom_intervalo].ji_estadistico = acom_estadistico;
@@ -471,6 +470,10 @@ subset: prueba_chi_cuadrado_normal
         cell1.innerHTML = "<b>FO</b>";
         cell2.innerHTML = "<b>FE</b>";
         cell3.innerHTML = "<b>Ji Estadistico</b>";
+
+
+        t_resultados[acom_intervalo].fo = acom_fo;
+        t_resultados[acom_intervalo].fe = acom_fe;
 
         acomu_fe_total = 0;
         acomu_fo_total = 0;
