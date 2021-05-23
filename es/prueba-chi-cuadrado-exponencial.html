@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="../assets/icon.png">
+
+  <title>Prueba chi-cuadrado (normal) | UCC</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" />
+  <link rel="stylesheet" href="../assets/styles.css" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jstat@latest/dist/jstat.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/underscore@1.13.1/underscore-umd-min.js"></script>
+  <script src="../assets/bundle.js"></script>
+  <script src="../assets/app.js"></script>
+</head>
+
+<body class="h-100">
+
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">UCC</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Inicio</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="numeros-aleatorios" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Números aleatorios
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="numeros-aleatorios">
+              <li>
+                <a class="dropdown-item" href="aleatorios-uniforme.html">Distribución uniforme</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="aleatorios-normal.html">Distribución normal</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="aleatorios-bernoulli.html">Distribución Bernoulli</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="aleatorios-beta.html">Distribución beta</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="aleatorios-binomial.html">Distribución binomial</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="aleatorios-chi-cuadrado.html">Distribución chi cuadrado</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="aleatorios-chi.html">Distribución chi</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="aleatorios-exponencial.html">Distribución exponencial</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="aleatorios-gamma.html">Distribución gamma</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="aleatorios-pareto.html">Distribución pareto</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="aleatorios-poisson.html">Distribución poisson</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="aleatorios-triangular.html">Distribución triangular</a>
+              </li>
+
+
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="pruebas-bondad" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Bondad de ajuste
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="pruebas-bondad">
+              <li>
+                <a class="dropdown-item" href="prueba-mvc.html">Prueba de medias, varianza y corridas</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="prueba-series.html">Prueba de series</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="prueba-poker.html">Prueba de poker</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="prueba-chi-cuadrado-normal.html">Chi-cuadrado (normal)</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="prueba-chi-cuadrado-exponencial.html">Chi-squared test (Exponencial)</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <a href="https://github.com/pedrazadixon/ucc-tvs/" target="_blank">
+          <i class="bi bi-github mx-3" style="color: white; font-size: 22px;"></i>
+        </a>
+
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              es
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="https://pedrazadixon.github.io/ucc-tvs/es/prueba-chi-cuadrado-exponencial.html">Español</a></li>
+              <li><a class="dropdown-item" href="https://pedrazadixon.github.io/ucc-tvs/en/prueba-chi-cuadrado-exponencial.html">English</a></li>
+            </ul>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+
+  <div class="row h-100 m-3">
+    <div class="col-2">
+
+        <!-- <div class="mb-3">
+            <label class="form-label">Nivel de confianza</label>
+            <input type="number" class="form-control form-control-sm" id="confianza" value="95" />
+        </div> -->
+
+        <div class="mb-3">
+            <label class="form-label">alpha</label>
+            <input type="number" class="form-control form-control-sm" id="val-alpha" value="0.05" min="0" max="1" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Datos</label>
+            <textarea style="min-height: 400px" class="form-control form-control-sm" id="numeros_aleatorios">
+                13,76250549
+                1,416960987
+                1,599425953
+                4,547317317
+                3,632333604
+                13,66942789
+                20,39367727
+                7,623156103
+                23,80655071
+                11,14178634
+                5,091515399
+                4,673086158
+                10,29508079
+                1,311721951
+                0,565573403
+                7,179825521
+                5,470089745
+                3,349695684
+                0,432226457
+                30,77629091
+                6,467162608
+                20,2759124
+                11,68921007
+                4,0600166
+                35,88388156
+                8,619250644
+                8,086463235
+                3,411043207
+                1,697501822
+                0,274497681
+                50,63130097
+                14,94796837
+                2,540322711
+                4,705637585
+                3,049556956
+                1,763713701
+                6,939340753
+                7,861001014
+                8,200384696
+                3,458046481
+                5,264811661
+                9,393776662
+                8,310770638
+                3,314095854
+                23,00323107
+                1,617989854
+                1,973055159
+                7,350135371
+                0,937080142
+                12,28569726
+                2,325705518
+                0,797170134
+                0,915748179
+                7,173625247
+                3,920922423
+                7,750617733
+                1,667179458
+                10,49405997
+                21,12188262
+                22,87607301
+                9,775915813
+                3,330893386
+                4,55384266
+                13,09617134
+                21,21006566
+                10,06041877
+                8,480604678
+                28,04699078
+                10,40652104
+                14,68260809
+                3,724974921
+                9,492767927
+                7,136142862
+                6,020100897
+                12,85271057
+                20,66877717
+                13,61405035
+                18,24392356
+                4,944968343
+                20,22127966
+                22,14289013
+                7,689868566
+                2,042344986
+                6,701687316
+                5,88455954
+                23,86358358
+                7,279824638
+                1,770453124
+                15,35317959
+                2,202916815
+                18,78873003
+                10,62977931
+                1,277773113
+                9,271496176
+                5,739529125
+                0,645840583
+                3,490878763
+                6,230251884
+                3,045540441
+                12,09780403
+                3,638804548
+                0,229079538
+                4,562097901
+                0,185173415
+                52,57261496
+                6,786088458
+                5,560676268
+                20,17358888
+                4,121732422
+                25,01234039
+                32,6090528
+                3,292095182
+                1,613392728
+                2,895478583
+                13,19105686
+                2,038296481
+                9,578358274
+                32,08589163
+                2,125676698
+                7,302909581
+                0,705684616
+                5,621973462
+                13,0311093
+                10,43556135
+                3,885481563
+                7,822096648
+                8,422487766
+                19,32655396
+                6,991930463
+                5,446816498
+                8,80050176
+                1,901656982
+                7,721810734
+                24,79749958
+                18,09585991
+                39,29045027
+                10,97704309
+                34,48831133
+                26,89659256
+                4,289683241
+                21,0503689
+                3,889541933
+                11,82153346
+                13,62543205
+                5,01654969
+                1,789967234
+                1,745271034
+                5,803945987
+                11,11873697
+                12,38547067
+                1,772877184
+                0,686062228
+                1,321817353
+                0,503144716
+                4,021917573
+                6,194865713
+                0,805768526
+                17,74261487
+                16,98625297
+                1,691265024
+                0,020467225
+                3,555481806
+                9,729659411
+                11,25261333
+                4,889413583
+                1,404080142
+                2,774513495
+                11,36816538
+                1,762295862
+                37,34425631
+                3,70153675
+                31,27184535
+                9,085159442
+                2,471378063
+                2,213329914
+                1,236343153
+                14,50959756
+                22,62203434
+                25,28605757
+                7,294014955
+                1,431680818
+                4,571387443
+                8,501563626
+                24,7294293
+                7,36193691
+                8,559809898
+                6,541483644
+                3,310252955
+                30,83471924
+                0,083333627
+                8,935106493
+                18,25667626
+                5,554995886
+                2,810792223
+                15,28321667
+                1,070629675
+                5,10711895
+                10,43406848
+                0,158753877
+                2,787027347
+                </textarea>
+        </div>
+
+        <div class="row mt-3 px-3">
+            <button class="btn btn-primary" onclick="ejecutarPrueba()">
+                Ejecutar
+            </button>
+        </div>
+    </div>
+
+    <div class="col-10" id="contenido" style="display: none">
+        <div class="row">
+            <div class="col-12">
+                <div class="card mt-2">
+                    <div class="card-body">
+                        <table class="table table-sm" id="intervalos"></table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="card mt-2">
+                    <div class="card-body">
+                        <table class="table table-sm" id="intervalos_complemento"></table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card mt-2">
+                    <div class=card-body">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Total FO</th>
+                                    <td><span id="total_fo"></span></td>
+                                </tr>
+                                <tr>
+                                    <th>Total FE</th>
+                                    <td><span id="total_fe"></span></td>
+                                </tr>
+                                <tr>
+                                    <th>Total Ji- Calculado</th>
+                                    <td><span id="total_ji_calculada"></span></td>
+                                </tr>
+                                <tr>
+                                    <th>###################</th>
+                                    <td> </td>
+                                </tr>
+                                <tr>
+                                    <th>Grados de libertad</th>
+                                    <td><span id="total_grados_lib"></span></td>
+                                </tr>
+                                <tr>
+                                    <th>Alpha</th>
+                                    <td><span id="total_alpha"></span></td>
+                                </tr>
+                                <tr>
+                                    <th>Ji teórico</th>
+                                    <td><span id="total_jiteorico"></span></td>
+                                </tr>
+                                <tr>
+                                    <th>Decisión</th>
+                                    <td><span id="total_decision"></span></td>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="mb-3">
+                    <div id="container-fo" style="height: 350px; margin: 0 auto"></div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="mb-3">
+                    <div id="container-fe" style="height: 350px; margin: 0 auto"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<script>
+
+    var matriz = [];
+    var t_resultados = [];
+
+    var ejecutarPrueba = function () {
+
+        lineas = $("#numeros_aleatorios").val().split(/\t| |\n/);
+
+        matriz = [];
+
+        lineas.forEach(function (el) {
+            if (!isNaN(parseFloat(el.trim()))) {
+                matriz.push(parseFloat(el.trim().replace(",", ".")));
+            }
+
+        });
+
+        $("#contenido").show();
+
+        var total_datos = matriz.length;
+        var regla_de_sturges = 1 + 3.322 * Math.log10(total_datos);
+        var intervalos = Math.round(regla_de_sturges, 0);
+        var minimo = Math.min(...matriz);
+        var maximo = Math.max(...matriz);
+        var rango = maximo - minimo;
+        var amplitud_del_intervalo = rango / intervalos;
+        var media = jStat.mean(matriz);
+        var desviacion_estandar = jStat.stdev(matriz);
+        var lambda = (1 / media);
+
+        /*    console.log("matriz: ",matriz);
+           console.log("total_datos: ",total_datos);
+           console.log("regla_de_sturges: ",regla_de_sturges);
+           console.log("intervalos: ",intervalos);
+           console.log("minimo: ",minimo);
+           console.log("maximo: ",maximo);
+           console.log("rango: ",rango);
+           console.log("amplitud_del_intervalo: ",amplitud_del_intervalo);
+           console.log("media: ",media);
+           console.log("desviacion_estandar: ",desviacion_estandar);
+           console.log("lambda: ",lambda); */
+
+
+        // calculo freciencas observadas para cada intervalo
+        t_resultados = [];
+        var intervalo_actual_min = minimo;
+        var intervalo_actual_max = minimo + amplitud_del_intervalo;
+        for (let intervalo = 0; intervalo < intervalos; intervalo++) {
+            t_resultados[intervalo] = {};
+            t_resultados[intervalo].lim_inf = intervalo_actual_min
+            t_resultados[intervalo].lim_sup = intervalo + 1 == intervalos ? maximo : intervalo_actual_max;
+            t_resultados[intervalo].fo = 0;
+            if (intervalo + 1 != intervalos) {
+                // primeros intervalos
+                for (let numero = 0; numero < matriz.length; numero++) {
+                    if (matriz[numero] >= intervalo_actual_min && matriz[numero] < intervalo_actual_max)
+                        t_resultados[intervalo].fo = t_resultados[intervalo].fo + 1;
+                }
+            } else {
+                // ultimo intervalo
+                for (let numero = 0; numero < matriz.length; numero++) {
+                    if (matriz[numero] >= intervalo_actual_min && matriz[numero] <= maximo)
+                        t_resultados[intervalo].fo = t_resultados[intervalo].fo + 1;
+                }
+            }
+            intervalo_actual_min = intervalo_actual_min + amplitud_del_intervalo;
+            intervalo_actual_max = intervalo_actual_max + amplitud_del_intervalo;
+        }
+
+
+        for (let intervalo = 0; intervalo < t_resultados.length; intervalo++) {
+            t_resultados[intervalo].prob_lim_sup = jStat.exponential.cdf(t_resultados[intervalo].lim_sup, lambda);
+            t_resultados[intervalo].prob_lim_inf = jStat.exponential.cdf(t_resultados[intervalo].lim_inf, lambda);
+            t_resultados[intervalo].prob_intervalo = t_resultados[intervalo].prob_lim_sup - t_resultados[intervalo].prob_lim_inf;
+            t_resultados[intervalo].fe = t_resultados[intervalo].prob_intervalo * total_datos;
+            t_resultados[intervalo].ji_cuadrado = ((t_resultados[intervalo].fo - t_resultados[intervalo].fe) ** 2) / t_resultados[intervalo].fe;
+        }
+
+        for (let intervalo = 0; intervalo < t_resultados.length; intervalo++) {
+            t_resultados[intervalo].prob_lim_sup = jStat.exponential.cdf(t_resultados[intervalo].lim_sup, lambda);
+            t_resultados[intervalo].prob_lim_inf = jStat.exponential.cdf(t_resultados[intervalo].lim_inf, lambda);
+            t_resultados[intervalo].prob_intervalo = t_resultados[intervalo].prob_lim_sup - t_resultados[intervalo].prob_lim_inf;
+            t_resultados[intervalo].fe = t_resultados[intervalo].prob_intervalo * total_datos;
+            t_resultados[intervalo].ji_cuadrado = ((t_resultados[intervalo].fo - t_resultados[intervalo].fe) ** 2) / t_resultados[intervalo].fe;
+        }
+
+        acom_intervalo = 0;
+        acom_fo = 0;
+        acom_fe = 0
+        acom_estadistico = [];
+        for (let intervalo = 0; intervalo < t_resultados.length; intervalo++) {
+            if (t_resultados[intervalo].fe >= 5) {
+                acom_intervalo = acom_intervalo + 1;
+                t_resultados[intervalo].ji_estadistico = ((t_resultados[intervalo].fo - t_resultados[intervalo].fe) ** 2) / t_resultados[intervalo].fe;
+            } else {
+                acom_fo = acom_fo + t_resultados[intervalo].fo;
+                acom_fe = acom_fe + t_resultados[intervalo].fe;
+            }
+        }
+        t_resultados[acom_intervalo].fo = acom_fo;
+        t_resultados[acom_intervalo].fe = acom_fe;
+
+        acom_estadistico = ((acom_fo - acom_fe) ** 2) / acom_fe;
+        t_resultados[acom_intervalo].ji_estadistico = acom_estadistico;
+
+
+
+
+        // INTERFAZ GRAFICA
+        $("#intervalos").empty();
+        var table = document.getElementById("intervalos");
+        var row = table.insertRow(0);
+        var cell0 = row.insertCell(0);
+        var cell1 = row.insertCell(1);
+        var cell2 = row.insertCell(2);
+        var cell3 = row.insertCell(3);
+        var cell4 = row.insertCell(4);
+        var cell5 = row.insertCell(5);
+        var cell6 = row.insertCell(6);
+        var cell7 = row.insertCell(7);
+        var cell8 = row.insertCell(8);
+        cell0.innerHTML = "<b>Cat.</b>";
+        cell1.innerHTML = "<b>Lim. Inf.</b>";
+        cell2.innerHTML = "<b>Lim. Sup.</b>";
+        cell3.innerHTML = "<b>FO</b>";
+        cell4.innerHTML = "<b>P(LS)</b>";
+        cell5.innerHTML = "<b>P(LI)</b>";
+        cell6.innerHTML = "<b>P(Cat.)</b>";
+        cell7.innerHTML = "<b>FE</b>";
+        for (let i = 0; i < t_resultados.length; i++) {
+            var row = table.insertRow(i + 1);
+            var cell0 = row.insertCell(0);
+            var cell1 = row.insertCell(1);
+            var cell2 = row.insertCell(2);
+            var cell3 = row.insertCell(3);
+            var cell4 = row.insertCell(4);
+            var cell5 = row.insertCell(5);
+            var cell6 = row.insertCell(6);
+            var cell7 = row.insertCell(7);
+            var cell8 = row.insertCell(8);
+            cell0.innerHTML = i + 1;
+            cell1.innerHTML = t_resultados[i].lim_inf.toFixed(8);
+            cell2.innerHTML = t_resultados[i].lim_sup.toFixed(8);
+            cell3.innerHTML = t_resultados[i].fo;
+            cell4.innerHTML = t_resultados[i].prob_lim_sup.toFixed(8);
+            cell5.innerHTML = t_resultados[i].prob_lim_inf.toFixed(8);
+            cell6.innerHTML = t_resultados[i].prob_intervalo.toFixed(8);
+            cell7.innerHTML = t_resultados[i].fe.toFixed(8);
+        }
+
+
+
+        // INTERFAZ GRAFICA
+        $("#intervalos_complemento").empty();
+        var table = document.getElementById("intervalos_complemento");
+        var row = table.insertRow(0);
+        var cell0 = row.insertCell(0);
+        var cell1 = row.insertCell(1);
+        var cell2 = row.insertCell(2);
+        var cell3 = row.insertCell(3);
+        cell0.innerHTML = "<b>Intervalo.</b>";
+        cell1.innerHTML = "<b>FO</b>";
+        cell2.innerHTML = "<b>FE</b>";
+        cell3.innerHTML = "<b>Ji Estadistico</b>";
+
+        acomu_fe_total = 0;
+        acomu_fo_total = 0;
+        acomu_ji_estadistico = 0;
+        h_fe_data = [];
+        for (let i = 0; i < acom_intervalo + 1; i++) {
+            var row = table.insertRow(i + 1);
+            var cell0 = row.insertCell(0);
+            var cell1 = row.insertCell(1);
+            var cell2 = row.insertCell(2);
+            var cell3 = row.insertCell(3);
+            cell0.innerHTML = i + 1;
+            cell1.innerHTML = t_resultados[i].fo;
+            cell2.innerHTML = t_resultados[i].fe;
+            cell3.innerHTML = t_resultados[i].ji_estadistico;
+
+            acomu_fe_total = acomu_fe_total + t_resultados[i].fe;
+            acomu_fo_total = acomu_fo_total + t_resultados[i].fo;
+            acomu_ji_estadistico = acomu_ji_estadistico + t_resultados[i].ji_estadistico;
+            h_fe_data.push(t_resultados[i].fe)
+        }
+
+        var val_alpha = parseFloat($('#val-alpha').val().trim().replace(",", "."));
+        var ji_teorico = jStat.chisquare.inv(val_alpha, (t_resultados.length - acom_intervalo));
+        var desicion = (acomu_ji_estadistico > ji_teorico) ? "Se acepta" : "Se rechaza";
+        $("#total_fo").text(acomu_fo_total);
+        $("#total_fe").text(acomu_fe_total);
+        $("#total_ji_calculada").text(acomu_ji_estadistico);
+        $("#total_grados_lib").text((t_resultados.length - acom_intervalo));
+        $("#total_alpha").text(val_alpha);
+        $("#total_jiteorico").text(ji_teorico);
+        $("#total_decision").text(desicion);
+
+
+
+
+        // HISTOGRAMAS
+        var h_categories = [];
+        t_resultados.forEach((v, i) => h_categories.push(i + 1))
+
+        var h_fo_data = [];
+        t_resultados.forEach((v, i) => h_fo_data.push(v.fo))
+
+        graficarChiCuadrado('container-fo', 'Hist. FO', h_categories, h_fo_data);
+        graficarChiCuadrado('container-fe', 'Hist. FE', h_categories, h_fe_data);
+
+    }
+
+
+</script>
+
+  <footer class="footer bg-dark">
+    <div class="footer-div">
+      <span class="text-muted">Técnicas de Validación y Simulación. - 2021</span>
+    </div>
+  </footer>
+
+</body>
+
+</html>
