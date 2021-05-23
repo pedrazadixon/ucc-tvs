@@ -17,6 +17,7 @@ layout:
   min_value: Valor min.
   optional: Opcional
   chi_squared_test: Chi-cuadrado (normal)
+  chi_squared_test_expo: Chi-squared test (Exponencial)
   data: Datos
   uniform_distribution: Distribución uniforme
   normal_distribution: Distribución normal
