@@ -6,6 +6,14 @@ languages:
 subset: aleatorios_exponencial
 ---
 <div class="row h-100 m-3">
+
+    <div class="col-12">
+        <h5>{% t 'layout.sub_title_prepend' %} <b>{% t 'layout.exponential_distribution' %}</b></h5>
+        <p>{% t 'sumary' %}</p>
+    </div>
+
+    <hr>
+
     <div class="col-sm-12 col-md-6 col-lg-2">
 
         <div class="mb-3">
@@ -14,7 +22,8 @@ subset: aleatorios_exponencial
         </div>
         <div class="mb-3">
             <label class="form-label">lambda</label>
-            <input type="number" class="form-control form-control-sm" id="val-lambda" value="0.25" min="0" step="0.05" required />
+            <input type="number" class="form-control form-control-sm" id="val-lambda" value="0.25" min="0" step="0.05"
+                required />
         </div>
         <div class="mb-3">
             <label class="form-label">{% t 'layout.precision' %}</label>
