@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8" />
@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/png" href="../assets/icon.png">
 
-  <title>Distribución normal | UCC</title>
+  <title>Chi | UCC</title>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
@@ -37,49 +37,49 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
+            <a class="nav-link" href="index.html">Home</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="numeros-aleatorios" role="button" data-bs-toggle="dropdown"
               aria-expanded="false">
-              Números aleatorios
+              Ramdom numbers
             </a>
             <ul class="dropdown-menu" aria-labelledby="numeros-aleatorios">
               <li>
-                <a class="dropdown-item" href="aleatorios-uniforme.html">Distribución uniforme</a>
+                <a class="dropdown-item" href="aleatorios-uniforme.html">Uniform distribution</a>
               </li>
               <li>
-                <a class="dropdown-item" href="aleatorios-normal.html">Distribución normal</a>
+                <a class="dropdown-item" href="aleatorios-normal.html">Normal distribution</a>
               </li>
               <li>
-                <a class="dropdown-item" href="aleatorios-bernoulli.html">Distribución Bernoulli</a>
+                <a class="dropdown-item" href="aleatorios-bernoulli.html">Bernoulli distribution</a>
               </li>
               <li>
-                <a class="dropdown-item" href="aleatorios-beta.html">Distribución beta</a>
+                <a class="dropdown-item" href="aleatorios-beta.html">Beta distribution</a>
               </li>
               <li>
-                <a class="dropdown-item" href="aleatorios-binomial.html">Distribución binomial</a>
+                <a class="dropdown-item" href="aleatorios-binomial.html">Binomial distribution</a>
               </li>
               <li>
-                <a class="dropdown-item" href="aleatorios-chi-cuadrado.html">Distribución chi cuadrado</a>
+                <a class="dropdown-item" href="aleatorios-chi-cuadrado.html">Chi Square distribution</a>
               </li>
               <li>
-                <a class="dropdown-item" href="aleatorios-chi.html">Distribución chi</a>
+                <a class="dropdown-item" href="aleatorios-chi.html">Chi distribution</a>
               </li>
               <li>
-                <a class="dropdown-item" href="aleatorios-exponencial.html">Distribución exponencial</a>
+                <a class="dropdown-item" href="aleatorios-exponencial.html">Exponential distribution</a>
               </li>
               <li>
-                <a class="dropdown-item" href="aleatorios-gamma.html">Distribución gamma</a>
+                <a class="dropdown-item" href="aleatorios-gamma.html">Gamma distribution</a>
               </li>
               <li>
-                <a class="dropdown-item" href="aleatorios-pareto.html">Distribución pareto</a>
+                <a class="dropdown-item" href="aleatorios-pareto.html">Pareto distribution</a>
               </li>
               <li>
-                <a class="dropdown-item" href="aleatorios-poisson.html">Distribución poisson</a>
+                <a class="dropdown-item" href="aleatorios-poisson.html">Poisson distribution</a>
               </li>
               <li>
-                <a class="dropdown-item" href="aleatorios-triangular.html">Distribución triangular</a>
+                <a class="dropdown-item" href="aleatorios-triangular.html">Triangular distribution</a>
               </li>
 
 
@@ -88,7 +88,7 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="pruebas-bondad" role="button" data-bs-toggle="dropdown"
               aria-expanded="false">
-              Bondad de ajuste
+              Goodness of fit
             </a>
             <ul class="dropdown-menu" aria-labelledby="pruebas-bondad">
               <li>
@@ -101,7 +101,7 @@
                 <a class="dropdown-item" href="prueba-poker.html">Prueba de poker</a>
               </li>
               <li>
-                <a class="dropdown-item" href="prueba-chi-cuadrado-normal.html">Chi-cuadrado (normal)</a>
+                <a class="dropdown-item" href="prueba-chi-cuadrado-normal.html">Chi-squared test (normal)</a>
               </li>
             </ul>
           </li>
@@ -115,11 +115,11 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
               aria-expanded="false">
-              es
+              en
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="https://pedrazadixon.github.io/ucc-tvs/es/aleatorios-normal.html">Español</a></li>
-              <li><a class="dropdown-item" href="https://pedrazadixon.github.io/ucc-tvs/en/aleatorios-normal.html">English</a></li>
+              <li><a class="dropdown-item" href="https://pedrazadixon.github.io/ucc-tvs/es/aleatorios-chi.html">Español</a></li>
+              <li><a class="dropdown-item" href="https://pedrazadixon.github.io/ucc-tvs/en/aleatorios-chi.html">English</a></li>
             </ul>
           </li>
         </ul>
@@ -131,8 +131,8 @@
   <div class="row h-100 m-3">
 
     <div class="col-12">
-        <h5>Generador de números aleatorios para una <b>Distribución normal</b></h5>
-        <p>También conocida como distribución de Gauss, distribución gaussiana o distribución de Laplace-Gauss, a una de las distribuciones de probabilidad de variable continua que con más frecuencia aparece en estadística y en la teoría de probabilidades.llama distribución normal, distribución de Gauss, distribución gaussiana o distribución de Laplace-Gauss, a una de las distribuciones de probabilidad de variable continua que con más frecuencia aparece en estadística y en la teoría de probabilidades.</p>
+        <h5>Random number generator for a <b>Chi distribution</b></h5>
+        <p>Is a continuous probability distribution. It is the distribution of the positive square root of the sum of squares of a set of independent random variables each following a standard normal distribution, or equivalently, the distribution of the Euclidean distance of the random variables from the origin. It is thus related to the chi-squared distribution by describing the distribution of the positive square roots of a variable obeying a chi-squared distribution.</p>
     </div>
 
     <hr>
@@ -140,32 +140,28 @@
     <div class="col-sm-12 col-md-6 col-lg-2">
 
         <div class="mb-3">
-            <label class="form-label">Números aleatorios</label>
+            <label class="form-label">Random numbers</label>
             <input type="number" class="form-control form-control-sm" id="cant-numeros" value="500" min="1" required />
         </div>
         <div class="mb-3">
-            <label class="form-label">mu</label>
-            <input type="number" class="form-control form-control-sm" id="val-mu" value="1" required />
+            <label class="form-label">k</label>
+            <input type="number" class="form-control form-control-sm" id="val-k" value="5" min="1" required />
         </div>
         <div class="mb-3">
-            <label class="form-label">sigma</label>
-            <input type="number" class="form-control form-control-sm" id="val-sigma" value="2" min="0" required />
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Cant. decimales</label>
+            <label class="form-label">Precision</label>
             <input type="number" class="form-control form-control-sm" id="cant-decimales" value="" min="0"
-                placeholder="Opcional" />
+                placeholder="Optional" />
         </div>
         <div class="row mt-3 px-3">
             <button class="btn btn-primary" onclick="generarAleatorios()">
-                Ejecutar
+                Run
             </button>
         </div>
     </div>
 
     <div class="col-sm-12 col-md-6 col-lg-3">
         <div class="mb-3">
-            <label class="form-label">Resultados</label>
+            <label class="form-label">Results</label>
             <textarea style="min-height: 400px" class="form-control form-control-sm"
                 id="numeros_aleatorios"> </textarea>
         </div>
@@ -186,10 +182,9 @@
             var cant_decimales = parseInt($('#cant-decimales').val().trim());
             var cant_aleatorios = parseInt($('#cant-numeros').val().trim());
 
-            var val_mu = parseFloat($('#val-mu').val().trim());
-            var val_sigma = parseFloat($('#val-sigma').val().trim());
+            var val_k = parseFloat($('#val-k').val().trim());
 
-            randomArray = _lib_.unirand.normal(val_mu, val_sigma).distributionSync(cant_aleatorios);
+            randomArray = _lib_.unirand.chi(val_k).distributionSync(cant_aleatorios);
 
             if (!isNaN(cant_decimales))
                 randomArray = randomArray.map(v => parseFloat(v.toFixed(cant_decimales)));
@@ -204,7 +199,7 @@
 
   <footer class="footer bg-dark">
     <div class="footer-div">
-      <span class="text-muted">Técnicas de Validación y Simulación. - 2021</span>
+      <span class="text-muted">Validation and Simulation Techniques. - 2021</span>
     </div>
   </footer>
 
