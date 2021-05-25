@@ -396,7 +396,7 @@ subset: prueba_chi_cuadrado_normal
         acom_intervalo = 0;
         acom_fo = 0;
         acom_fe = 0
-        acom_estadistico = [];
+        acom_estadistico = 0;
         for (let intervalo = 0; intervalo < t_resultados.length; intervalo++) {
             if (t_resultados[intervalo].fe >= 5) {
                 acom_intervalo = acom_intervalo + 1;
@@ -404,15 +404,25 @@ subset: prueba_chi_cuadrado_normal
             } else {
                 acom_fo = acom_fo + t_resultados[intervalo].fo;
                 acom_fe = acom_fe + t_resultados[intervalo].fe;
+                acom_estadistico = ((acom_fo - acom_fe) ** 2) / acom_fe;
+                t_resultados[acom_intervalo].ji_estadistico = acom_estadistico;
+                t_resultados[acom_intervalo].fo = acom_fo;
+                t_resultados[acom_intervalo].fe = acom_fe; 
             }
         }
         
-
-        acom_estadistico = ((acom_fo - acom_fe) ** 2) / acom_fe;
-        t_resultados[acom_intervalo].ji_estadistico = acom_estadistico;
-
-
-
+        
+        var val_alpha = parseFloat($('#val-alpha').val().trim().replace(",", "."));
+        if(t_resultados.length != acom_intervalo){
+            acom_intervalo = acom_intervalo+1      
+            var gradoslib =  (acom_intervalo-2)
+            var ji_teorico = jStat.chisquare.inv(val_alpha, gradoslib);  
+        }else{
+            var gradoslib =  (t_resultados.length - 1) 
+            var ji_teorico = jStat.chisquare.inv(val_alpha, gradoslib);
+        }
+           
+       
 
         // INTERFAZ GRAFICA
         $("#intervalos").empty();
@@ -472,14 +482,13 @@ subset: prueba_chi_cuadrado_normal
         cell3.innerHTML = "<b>Ji Estadistico</b>";
 
 
-        t_resultados[acom_intervalo].fo = acom_fo;
-        t_resultados[acom_intervalo].fe = acom_fe;
+ 
 
         acomu_fe_total = 0;
         acomu_fo_total = 0;
         acomu_ji_estadistico = 0;
         h_fe_data = [];
-        for (let i = 0; i < acom_intervalo + 1; i++) {
+        for (let i = 0; i < acom_intervalo; i++) {
             var row = table.insertRow(i + 1);
             var cell0 = row.insertCell(0);
             var cell1 = row.insertCell(1);
@@ -496,13 +505,12 @@ subset: prueba_chi_cuadrado_normal
             h_fe_data.push(t_resultados[i].fe)
         }
 
-        var val_alpha = parseFloat($('#val-alpha').val().trim().replace(",", "."));
-        var ji_teorico = jStat.chisquare.inv(val_alpha, (t_resultados.length - acom_intervalo));
+       
         var desicion = (acomu_ji_estadistico > ji_teorico) ? "Se acepta" : "Se rechaza";
         $("#total_fo").text(acomu_fo_total);
         $("#total_fe").text(acomu_fe_total);
         $("#total_ji_calculada").text(acomu_ji_estadistico);
-        $("#total_grados_lib").text((t_resultados.length - acom_intervalo));
+        $("#total_grados_lib").text(gradoslib);
         $("#total_alpha").text(val_alpha);
         $("#total_jiteorico").text(ji_teorico);
         $("#total_decision").text(desicion);
