@@ -269,7 +269,7 @@ subset: prueba_chi_cuadrado_exponencial
                                     <td><span id="total_fe"></span></td>
                                 </tr>
                                 <tr>
-                                    <th>Total Ji- Calculado</th>
+                                    <th>Total {% t 'layout.ji_calculated' %}</th>
                                     <td><span id="total_ji_calculada"></span></td>
                                 </tr>
                                 <tr>
@@ -277,7 +277,7 @@ subset: prueba_chi_cuadrado_exponencial
                                     <td> </td>
                                 </tr>
                                 <tr>
-                                    <th>Grados de libertad</th>
+                                    <th> {% t 'layout.degrees_of_freedom' %}</th>
                                     <td><span id="total_grados_lib"></span></td>
                                 </tr>
                                 <tr>
@@ -285,11 +285,11 @@ subset: prueba_chi_cuadrado_exponencial
                                     <td><span id="total_alpha"></span></td>
                                 </tr>
                                 <tr>
-                                    <th>Ji teórico</th>
+                                    <th>{% t 'layout.ji_theoretical' %}</th>
                                     <td><span id="total_jiteorico"></span></td>
                                 </tr>
                                 <tr>
-                                    <th>Decisión</th>
+                                    <th>{% t 'layout.desicion' %}</th>
                                     <td><span id="total_decision"></span></td>
                                 </tr>
                             </thead>
@@ -345,18 +345,7 @@ subset: prueba_chi_cuadrado_exponencial
         var desviacion_estandar = jStat.stdev(matriz);
         var lambda = (1 / media);
 
-        /*    console.log("matriz: ",matriz);
-           console.log("total_datos: ",total_datos);
-           console.log("regla_de_sturges: ",regla_de_sturges);
-           console.log("intervalos: ",intervalos);
-           console.log("minimo: ",minimo);
-           console.log("maximo: ",maximo);
-           console.log("rango: ",rango);
-           console.log("amplitud_del_intervalo: ",amplitud_del_intervalo);
-           console.log("media: ",media);
-           console.log("desviacion_estandar: ",desviacion_estandar);
-           console.log("lambda: ",lambda); */
-
+       
 
         // calculo freciencas observadas para cada intervalo
         t_resultados = [];
@@ -484,10 +473,10 @@ subset: prueba_chi_cuadrado_exponencial
         var cell1 = row.insertCell(1);
         var cell2 = row.insertCell(2);
         var cell3 = row.insertCell(3);
-        cell0.innerHTML = "<b>Intervalo.</b>";
+        cell0.innerHTML = "<b>Cat.</b>";
         cell1.innerHTML = "<b>FO</b>";
         cell2.innerHTML = "<b>FE</b>";
-        cell3.innerHTML = "<b>Ji Estadistico</b>";
+        cell3.innerHTML = "<b>Ji Est.</b>";
 
 
  
@@ -514,7 +503,7 @@ subset: prueba_chi_cuadrado_exponencial
         }
 
        
-        var desicion = (acomu_ji_estadistico > ji_teorico) ? "Se acepta" : "Se rechaza";
+        var desicion = (acomu_ji_estadistico > ji_teorico) ? "{% t 'layout.accepted' %}" : " {% t 'layout.rejected' %}";
         $("#total_fo").text(acomu_fo_total);
         $("#total_fe").text(acomu_fe_total);
         $("#total_ji_calculada").text(acomu_ji_estadistico);

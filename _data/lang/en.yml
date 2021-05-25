@@ -32,7 +32,13 @@ layout:
   poisson_distribution: Poisson distribution
   triangular_distribution: Triangular distribution
   sub_title_prepend: Random number generator for a
-  sub_title_test: Test 
+  sub_title_test: Test
+  accepted: Is Accepted
+  rejected: Is rejected
+  degrees_of_freedom: Degrees of freedom
+  ji_calculated: Ji-Calculated
+  ji_theoretical: Ji-theoretical
+  desicion: Desicion
 index:
   title: Home
   suggestion: Use the top menu to select an option.

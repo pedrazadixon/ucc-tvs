@@ -32,7 +32,13 @@ layout:
   poisson_distribution: Distribución poisson
   triangular_distribution: Distribución triangular
   sub_title_prepend: Generador de números aleatorios para una
-  sub_title_test: Prueba 
+  sub_title_test: Prueba
+  accepted: Se acepta
+  rejected: Se rechaza
+  degrees_of_freedom: Grados de libertad
+  ji_calculated: Ji-Calculado
+  ji_theoretical: Ji-teórico
+  desicion: Desición
 index:
   title: Inicio
   suggestion: Use el menu superior para seleccionar una opción.
