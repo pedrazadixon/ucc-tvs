@@ -16,8 +16,8 @@ layout:
   max_value: Max. value
   min_value: Min. value
   optional: Optional
-  chi_squared_test: Chi-squared test (normal)
-  chi_squared_test_expo: Chi-squared test (exponential)
+  chi_squared_test: Chi-Squared test (normal)
+  chi_squared_test_expo: Chi-Squared test (exponential)
   data: Data
   uniform_distribution: Uniform distribution
   normal_distribution: Normal distribution
@@ -32,6 +32,7 @@ layout:
   poisson_distribution: Poisson distribution
   triangular_distribution: Triangular distribution
   sub_title_prepend: Random number generator for a
+  sub_title_test: Test 
 index:
   title: Home
   suggestion: Use the top menu to select an option.
@@ -50,6 +51,7 @@ aleatorios_uniforme:
   sumary: The continuous uniform distribution or rectangular distribution is a family of symmetric probability distributions. The distribution describes an experiment where there is an arbitrary outcome that lies between certain bounds.
 prueba_chi_cuadrado_normal:
   title: Chi-squared test (normal)
+  sumary: The chi-square distribution has many applications in statistical inference, for example in the chi-square test and in the estimation of variances. It is also involved in the problem of estimating the mean of a normally distributed population and in the problem of estimating the slope of a linear regression line, when When k is large enough it is approximated by the normal distribution. The chi-square distribution plays a critical role in statistical inference. It has a considerable application both in methodology and in theory, it is used to perform the Goodness of Fit test !!
 aleatorios_binomial:
   title: Binomial
   sumary: The binomial distribution with parameters n and p is the discrete probability distribution of the number of successes in a sequence of n independent experiments, each asking a yes–no question, and each with its own Boolean-valued outcome success (with probability p) or failure (with probability q = 1 − p)
@@ -74,3 +76,6 @@ aleatorios_poisson:
 aleatorios_triangular:
   title: Triangular
   sumary: In probability theory and statistics, the triangular distribution is a continuous probability distribution with lower limit a, upper limit b and mode c, where a < b and a ≤ c ≤ b.
+prueba_chi_cuadrado_exponencial:
+  title:  Chi-squared test (Exponencial)
+  sumary: The chi-square distribution has many applications in statistical inference, for example in the chi-square test and in the estimation of variances. It is also involved in the problem of estimating the mean of a normally distributed population and in the problem of estimating the slope of a linear regression line, when For k = 2 the distribution is an exponential distribution. The chi-square distribution plays a critical role in statistical inference. It has a considerable application both in methodology and in theory, it is used to perform the Goodness of Fit test !!

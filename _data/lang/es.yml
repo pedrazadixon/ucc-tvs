@@ -16,8 +16,8 @@ layout:
   max_value: Valor max.
   min_value: Valor min.
   optional: Opcional
-  chi_squared_test: Chi-cuadrado (normal)
-  chi_squared_test_expo: Chi-squared test (Exponencial)
+  chi_squared_test: Chi-Cuadrado (normal)
+  chi_squared_test_expo: Chi-Cuadrado (Exponencial)
   data: Datos
   uniform_distribution: Distribución uniforme
   normal_distribution: Distribución normal
@@ -32,6 +32,7 @@ layout:
   poisson_distribution: Distribución poisson
   triangular_distribution: Distribución triangular
   sub_title_prepend: Generador de números aleatorios para una
+  sub_title_test: Prueba 
 index:
   title: Inicio
   suggestion: Use el menu superior para seleccionar una opción.
@@ -50,6 +51,7 @@ aleatorios_uniforme:
   sumary: Es una familia de distribuciones de probabilidad para variables aleatorias continuas, tales que para cada miembro de la familia, todos los intervalos de igual longitud en la distribución en su rango son igualmente probables.
 prueba_chi_cuadrado_normal:
   title: Prueba chi-cuadrado (normal)
+  sumary: La distribución ji-cuadrado tiene muchas aplicaciones en inferencia estadística, por ejemplo en el test ji-cuadrado y en la estimación de varianzas. También está involucrada en el problema de estimar la media de una población normalmente distribuida y en el problema de estimar la pendiente de una recta de regresión lineal, cuando  Cuando k es suficientemente grande se aproxima por la distribución normal. La distribución chi cuadrada desempeña un papel fundamental en la inferencia estadística. Tiene una aplicación considerable tanto en la metodología como en la teoría, es utilizado para realizar la prueba de bondad de Ajuste!!
 aleatorios_binomial:
   title: Binomial
   sumary: También conocida como distribución binómica es una distribución de probabilidad discreta que cuenta el número de éxitos en una secuencia de n ensayos de Bernoulli independientes entre sí con una probabilidad fija p de ocurrencia de éxito entre los ensayos.
@@ -74,3 +76,6 @@ aleatorios_poisson:
 aleatorios_triangular:
   title: Triangular
   sumary: Es la distribución de probabilidad continua que tiene un valor mínimo a, un valor máximo b y una moda c, de modo que la función de densidad de probabilidad es cero para los extremos (a y b), y afín entre cada extremo y la moda, por lo que su gráfico es un triángulo.
+prueba_chi_cuadrado_exponencial:
+  title: Prueba chi-cuadrado (Exponencial)
+  sumary: La distribución ji-cuadrado tiene muchas aplicaciones en inferencia estadística, por ejemplo en el test ji-cuadrado y en la estimación de varianzas. También está involucrada en el problema de estimar la media de una población normalmente distribuida y en el problema de estimar la pendiente de una recta de regresión lineal, cuando  Para k = 2 la distribución es una distribución exponencial. La distribución chi cuadrada desempeña un papel fundamental en la inferencia estadística. Tiene una aplicación considerable tanto en la metodología como en la teoría, es utilizado para realizar la prueba de bondad de Ajuste!!
