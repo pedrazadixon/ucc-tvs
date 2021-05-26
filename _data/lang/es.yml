@@ -7,6 +7,7 @@ lang:
   es: Español
 layout:
   home: Inicio
+  confidence_interval: Intervalo de confianza
   ramdom_numbers: Números aleatorios
   goodness_of_fit_test: Bondad de ajuste
   random_numbers: Números aleatorios

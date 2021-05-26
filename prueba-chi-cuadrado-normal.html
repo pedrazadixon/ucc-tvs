@@ -11,11 +11,15 @@ subset: prueba_chi_cuadrado_normal
         <h5>{% t 'layout.sub_title_test' %} <b>{% t 'layout.chi_squared_test' %}</b></h5>
         <p>{% t 'sumary' %}</p>
     </div>
+
+    <hr>
+
     <div class="col-2">
 
         <div class="mb-3">
             <label class="form-label">alpha</label>
-            <input type="number" class="form-control form-control-sm" id="val-alpha" value="0.05" min="0" max="1" step="0.01" required />
+            <input type="number" class="form-control form-control-sm" id="val-alpha" value="0.05" min="0" max="1"
+                step="0.01" required />
         </div>
 
         <div class="mb-3">
@@ -70,7 +74,7 @@ subset: prueba_chi_cuadrado_normal
         </div>
     </div>
 
-    <div class="col-10" style="display: block">
+    <div class="col-10 contenido" style="display: none">
         <div class="row">
             <div class="col-12">
                 <div class="card mt-2">
@@ -173,17 +177,6 @@ subset: prueba_chi_cuadrado_normal
         var media = jStat.mean(matriz);
         var desviacion_estandar = jStat.stdev(matriz);
 
-
-        console.log("total datos	36: " + total_datos)
-        console.log("Número de intervalos	6,170036908: " + intervalos)
-        console.log("Valor min	50: " + minimo)
-        console.log("Valor max	104: " + maximo)
-        console.log("Rango	54: " + rango)
-        console.log("Amplitud 	9: " + amplitud_del_intervalo)
-        console.log("Media	75,19444444: " + media)
-        console.log("desviación	14,69075403: " + desviacion_estandar)
-
-
         // calculo freciencas observadas para cada intervalo
         t_resultados = [];
         var intervalo_actual_min = minimo;
@@ -275,30 +268,26 @@ subset: prueba_chi_cuadrado_normal
                 next = intervalo + 1
                 back = intervalo - 1
 
-                if ( back >0 && t_resultados[intervalo].fe <  t_resultados[back].fe) {
+                if (back > 0 && t_resultados[intervalo].fe < t_resultados[back].fe) {
                     t_resultados[back].fe = t_resultados[back].fe + t_resultados[intervalo].fe
                     t_resultados[back].fo = t_resultados[back].fo + t_resultados[intervalo].fo
                     t_resultados[back].ji_estadistico = ((t_resultados[back].fo - t_resultados[back].fe) ** 2) / t_resultados[back].fe;
                     delete t_resultados[intervalo];
                 }
 
-                if(next <  t_resultados.length && t_resultados[intervalo].fe <  t_resultados[next].fe){
+                if (next < t_resultados.length && t_resultados[intervalo].fe < t_resultados[next].fe) {
                     t_resultados[next].fe = t_resultados[next].fe + t_resultados[intervalo].fe
                     t_resultados[next].fo = t_resultados[next].fo + t_resultados[intervalo].fo
                     t_resultados[next].ji_estadistico = ((t_resultados[next].fo - t_resultados[next].fe) ** 2) / t_resultados[next].fe;
                     delete t_resultados[intervalo];
                 }
 
-            } 
+            }
         }
 
         t_resultados = t_resultados.filter(Boolean);
 
-        console.log(t_resultados)
-
-
-
-
+        $('.contenido').show();
 
         // INTERFAZ GRAFICA
         $("#intervalos_complemento").empty();
@@ -315,7 +304,7 @@ subset: prueba_chi_cuadrado_normal
 
         total_FO = 0;
         total_FE = 0;
-        total_JI =0;
+        total_JI = 0;
 
         for (let i = 0; i < t_resultados.length; i++) {
             var row = table.insertRow(i + 1);
@@ -334,9 +323,9 @@ subset: prueba_chi_cuadrado_normal
 
         var val_alpha = parseFloat($('#val-alpha').val().trim().replace(",", "."));
 
-        grado_lib = t_resultados.length -3; 
+        grado_lib = t_resultados.length - 3;
 
-        var ji_teorico = jStat.chisquare.inv((1-val_alpha), grado_lib);
+        var ji_teorico = jStat.chisquare.inv((1 - val_alpha), grado_lib);
 
         var desicion = (total_JI > ji_teorico) ? "{% t 'layout.accepted' %}" : " {% t 'layout.rejected' %}";
         $("#total_fo").text(total_FO);
@@ -348,7 +337,7 @@ subset: prueba_chi_cuadrado_normal
         $("#total_decision").text(desicion);
 
 
-    
+
 
         // HISTOGRAMAS
         var h_categories = [];

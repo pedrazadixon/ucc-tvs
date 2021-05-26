@@ -7,6 +7,7 @@ lang:
   es: Spanish
 layout:
   home: Home
+  confidence_interval: Confidence interval
   ramdom_numbers: Ramdom numbers
   goodness_of_fit_test: Goodness of fit
   random_numbers: Random numbers
