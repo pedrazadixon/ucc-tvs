@@ -101,10 +101,10 @@
                 <a class="dropdown-item" href="prueba-poker.html">Prueba de poker</a>
               </li>
               <li>
-                <a class="dropdown-item" href="prueba-chi-cuadrado-normal.html">Chi-squared test (normal)</a>
+                <a class="dropdown-item" href="prueba-chi-cuadrado-normal.html">Chi-Squared test (normal)</a>
               </li>
               <li>
-                <a class="dropdown-item" href="prueba-chi-cuadrado-exponencial.html">Chi-squared test (exponential)</a>
+                <a class="dropdown-item" href="prueba-chi-cuadrado-exponencial.html">Chi-Squared test (exponential)</a>
               </li>
             </ul>
           </li>
@@ -132,12 +132,16 @@
   </nav>
 
   <div class="row h-100 m-3">
+    <div class="col-12">
+        <h5>Test of <b>Chi-Squared test (normal)</b></h5>
+        <p>The chi-square distribution has many applications in statistical inference, for example in the chi-square test and in the estimation of variances. It is also involved in the problem of estimating the mean of a normally distributed population and in the problem of estimating the slope of a linear regression line, when When k is large enough it is approximated by the normal distribution. The chi-square distribution plays a critical role in statistical inference. It has a considerable application both in methodology and in theory, it is used to perform the Goodness of Fit test !!</p>
+    </div>
     <div class="col-2">
 
-        <!-- <div class="mb-3">
-            <label class="form-label">Nivel de confianza</label>
-            <input type="number" class="form-control form-control-sm" id="confianza" value="95" />
-        </div> -->
+        <div class="mb-3">
+            <label class="form-label">alpha</label>
+            <input type="number" class="form-control form-control-sm" id="val-alpha" value="0.05" min="0" max="1" required />
+        </div>
 
         <div class="mb-3">
             <label class="form-label">Data</label>
@@ -200,6 +204,58 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-5">
+                <div class="card mt-2">
+                    <div class="card-body">
+                        <table class="table table-sm" id="intervalos_complemento"></table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card mt-2">
+                    <div class=card-body">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Total FO</th>
+                                    <td><span id="total_fo"></span></td>
+                                </tr>
+                                <tr>
+                                    <th>Total FE</th>
+                                    <td><span id="total_fe"></span></td>
+                                </tr>
+                                <tr>
+                                    <th>Total Ji-Calculated</th>
+                                    <td><span id="total_ji_calculada"></span></td>
+                                </tr>
+                                <tr>
+                                    <th>###################</th>
+                                    <td> </td>
+                                </tr>
+                                <tr>
+                                    <th> Degrees of freedom</th>
+                                    <td><span id="total_grados_lib"></span></td>
+                                </tr>
+                                <tr>
+                                    <th>Alpha</th>
+                                    <td><span id="total_alpha"></span></td>
+                                </tr>
+                                <tr>
+                                    <th>Ji-theoretical</th>
+                                    <td><span id="total_jiteorico"></span></td>
+                                </tr>
+                                <tr>
+                                    <th>Desicion</th>
+                                    <td><span id="total_decision"></span></td>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
             <div class="col-6">
                 <div class="mb-3">
                     <div id="container-fo" style="height: 350px; margin: 0 auto"></div>
@@ -234,13 +290,24 @@
 
         var total_datos = matriz.length;
         var regla_de_sturges = 1 + 3.322 * Math.log10(total_datos);
-        var intervalos = Math.floor(regla_de_sturges);
+        var intervalos = Math.round(regla_de_sturges, 0);
         var minimo = Math.min(...matriz);
         var maximo = Math.max(...matriz);
         var rango = maximo - minimo;
-        var amplitud_del_intervalo = rango / regla_de_sturges;
+        var amplitud_del_intervalo = rango / intervalos;
         var media = jStat.mean(matriz);
         var desviacion_estandar = jStat.stdev(matriz);
+
+
+        console.log("total datos	36: " + total_datos)
+        console.log("Número de intervalos	6,170036908: " + intervalos)
+        console.log("Valor min	50: " + minimo)
+        console.log("Valor max	104: " + maximo)
+        console.log("Rango	54: " + rango)
+        console.log("Amplitud 	9: " + amplitud_del_intervalo)
+        console.log("Media	75,19444444: " + media)
+        console.log("desviación	14,69075403: " + desviacion_estandar)
+
 
         // calculo freciencas observadas para cada intervalo
         t_resultados = [];
@@ -298,7 +365,6 @@
         cell5.innerHTML = "<b>P(LI)</b>";
         cell6.innerHTML = "<b>P(Cat.)</b>";
         cell7.innerHTML = "<b>FE</b>";
-        cell8.innerHTML = "<b>Ji-cuadrado</b>";
         for (let i = 0; i < t_resultados.length; i++) {
             var row = table.insertRow(i + 1);
             var cell0 = row.insertCell(0);
@@ -309,7 +375,6 @@
             var cell5 = row.insertCell(5);
             var cell6 = row.insertCell(6);
             var cell7 = row.insertCell(7);
-            var cell8 = row.insertCell(8);
             cell0.innerHTML = i + 1;
             cell1.innerHTML = t_resultados[i].lim_inf.toFixed(8);
             cell2.innerHTML = t_resultados[i].lim_sup.toFixed(8);
@@ -318,9 +383,97 @@
             cell5.innerHTML = t_resultados[i].prob_lim_inf.toFixed(8);
             cell6.innerHTML = t_resultados[i].prob_intervalo.toFixed(8);
             cell7.innerHTML = t_resultados[i].fe.toFixed(8);
-            cell8.innerHTML = t_resultados[i].ji_cuadrado.toFixed(8);
+            //cell8.innerHTML = t_resultados[i].ji_cuadrado.toFixed(8);
         }
 
+
+        acom_intervalo = 0;
+        acom_fo = 0;
+        acom_fe = 0
+        acom_estadistico = 0;
+        t_resultados_tmp = []
+        for (let intervalo = 0; intervalo < t_resultados.length; intervalo++) {
+            if (t_resultados[intervalo].fe >= 5) {
+                acom_intervalo = acom_intervalo + 1;
+                t_resultados[intervalo].ji_estadistico = ((t_resultados[intervalo].fo - t_resultados[intervalo].fe) ** 2) / t_resultados[intervalo].fe;
+            } else {
+                next = intervalo + 1
+                back = intervalo - 1
+
+                if ( back >0 && t_resultados[intervalo].fe <  t_resultados[back].fe) {
+                    t_resultados[back].fe = t_resultados[back].fe + t_resultados[intervalo].fe
+                    t_resultados[back].fo = t_resultados[back].fo + t_resultados[intervalo].fo
+                    t_resultados[back].ji_estadistico = ((t_resultados[back].fo - t_resultados[back].fe) ** 2) / t_resultados[back].fe;
+                    delete t_resultados[intervalo];
+                }
+
+                if(next <  t_resultados.length && t_resultados[intervalo].fe <  t_resultados[next].fe){
+                    t_resultados[next].fe = t_resultados[next].fe + t_resultados[intervalo].fe
+                    t_resultados[next].fo = t_resultados[next].fo + t_resultados[intervalo].fo
+                    t_resultados[next].ji_estadistico = ((t_resultados[next].fo - t_resultados[next].fe) ** 2) / t_resultados[next].fe;
+                    delete t_resultados[intervalo];
+                }
+
+            } 
+        }
+
+        t_resultados = t_resultados.filter(Boolean);
+
+        console.log(t_resultados)
+
+
+
+
+
+        // INTERFAZ GRAFICA
+        $("#intervalos_complemento").empty();
+        var table = document.getElementById("intervalos_complemento");
+        var row = table.insertRow(0);
+        var cell0 = row.insertCell(0);
+        var cell1 = row.insertCell(1);
+        var cell2 = row.insertCell(2);
+        var cell3 = row.insertCell(3);
+        cell0.innerHTML = "<b>Cat.</b>";
+        cell1.innerHTML = "<b>FO</b>";
+        cell2.innerHTML = "<b>FE</b>";
+        cell3.innerHTML = "<b>Ji Est.</b>";
+
+        total_FO = 0;
+        total_FE = 0;
+        total_JI =0;
+
+        for (let i = 0; i < t_resultados.length; i++) {
+            var row = table.insertRow(i + 1);
+            var cell0 = row.insertCell(0);
+            var cell1 = row.insertCell(1);
+            var cell2 = row.insertCell(2);
+            var cell3 = row.insertCell(3);
+            cell0.innerHTML = i + 1;
+            cell1.innerHTML = t_resultados[i].fo;
+            cell2.innerHTML = t_resultados[i].fe.toFixed(8);
+            cell3.innerHTML = t_resultados[i].ji_estadistico.toFixed(8);
+            total_FO = total_FO + t_resultados[i].fo;
+            total_FE = total_FE + t_resultados[i].fe;
+            total_JI = total_JI + t_resultados[i].ji_estadistico
+        }
+
+        var val_alpha = parseFloat($('#val-alpha').val().trim().replace(",", "."));
+
+        grado_lib = t_resultados.length -3; 
+
+        var ji_teorico = jStat.chisquare.inv(val_alpha, grado_lib);
+
+        var desicion = (total_JI > ji_teorico) ? "Is Accepted" : " Is rejected";
+        $("#total_fo").text(total_FO);
+        $("#total_fe").text(total_FE);
+        $("#total_ji_calculada").text(total_JI);
+        $("#total_grados_lib").text(grado_lib);
+        $("#total_alpha").text(val_alpha);
+        $("#total_jiteorico").text(ji_teorico);
+        $("#total_decision").text(desicion);
+
+
+    
 
         // HISTOGRAMAS
         var h_categories = [];

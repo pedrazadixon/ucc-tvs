@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/png" href="../assets/icon.png">
 
-  <title>Prueba de Poker | UCC</title>
+  <title>Prueba de MVC | UCC</title>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
@@ -101,10 +101,10 @@
                 <a class="dropdown-item" href="prueba-poker.html">Prueba de poker</a>
               </li>
               <li>
-                <a class="dropdown-item" href="prueba-chi-cuadrado-normal.html">Chi-cuadrado (normal)</a>
+                <a class="dropdown-item" href="prueba-chi-cuadrado-normal.html">Chi-Cuadrado (normal)</a>
               </li>
               <li>
-                <a class="dropdown-item" href="prueba-chi-cuadrado-exponencial.html">Chi-squared test (Exponencial)</a>
+                <a class="dropdown-item" href="prueba-chi-cuadrado-exponencial.html">Chi-Cuadrado (Exponencial)</a>
               </li>
             </ul>
           </li>
@@ -132,6 +132,14 @@
   </nav>
 
   <div class="row h-100 m-3">
+
+    <div class="col-12">
+        <h5>Prueba de <b>Media, Varianza y Corridas</b></h5>
+        <p><b>Medias:</b> Nos permite contrastar hipótesis sobre igualdad de medias para muestras relacionadas. Se considera una población de diferencias con media µD, resultado de restar las puntuaciones de un mismo grupo en dos variables diferentes o en la misma variable en dos momentos diferentes.<br> <b>Carianza:</b> Es el concepto de regresión lineal, cuya funcionalidad amplía. Así, un análisis de la varianza permite determinar, por ejemplo, si diferentes tratamientos médicos (es decir, un grupo de más de dos tratamientos) muestran diferencias significativas en sus resultados o si por el contrario puede suponerse que sus medias poblacionales no difieren. De este modo el análisis de la varianza permite superar las limitaciones de hacer contrastes bilaterales por parejas entre todos los tratamientos posibles, lo que sería un mal método para determinar si un conjunto de variables con n > 2 difieren entre sí.  <br><b>Corridas:</b> El número observado de corridas es el número de grupos de observaciones que están por encima o por debajo del criterio de comparación, K. Minitab utiliza los criterios de comparación como un valor que usted especifica o la media predeterminada de las observaciones. El número de corridas de la muestra ayuda a determinar si la muestra es aleatoria.</p>
+        
+    </div>
+
+
     <div class="col-2">
         <div class="row" style="min-height: 400px">
             <textarea id="numeros_aleatorios" class="min-vh-50">
@@ -261,11 +269,11 @@
                                 <td><span id="media_h1"></span></td>
                             </tr>
                             <tr>
-                                <th>Promedio</th>
+                                <th> Promedio</th>
                                 <td><span id="media_promedio"></span></td>
                             </tr>
                             <tr>
-                                <th>Cantidad numeros</th>
+                                <th> Cantidad de Numeros</th>
                                 <td><span id="media_cantidad_num"></span></td>
                             </tr>
                             <tr>
@@ -277,15 +285,15 @@
                                 <td><span id="media_zalpha"></span></td>
                             </tr>
                             <tr>
-                                <th>Lim Superior(prom)</th>
+                                <th>Lim Sup(prom)</th>
                                 <td><span id="media_lim_superior"></span></td>
                             </tr>
                             <tr>
-                                <th>Lim Inferior (prom)</th>
+                                <th>Lim Inf(prom)</th>
                                 <td><span id="media_lim_inferior"></span></td>
                             </tr>
                             <tr>
-                                <th>Decisión</th>
+                                <th> Desición</th>
                                 <td><span id="media_decision"></span></td>
                             </tr>
                         </thead>
@@ -313,7 +321,7 @@
                                 <td><span id="varianza_promedio"></span></td>
                             </tr>
                             <tr>
-                                <th>Cantidad numeros</th>
+                                <th>Cantidad de Numeros</th>
                                 <td><span id="varianza_cantidad_num"></span></td>
                             </tr>
                             <tr>
@@ -329,15 +337,15 @@
                                 <td><span id="varianza_1jialpha"></span></td>
                             </tr>
                             <tr>
-                                <th>Lim Superior(prom)</th>
+                                <th>Lim Sup(prom)</th>
                                 <td><span id="varianza_lim_inferior"></span></td>
                             </tr>
                             <tr>
-                                <th>Lim Inferior (prom)</th>
+                                <th>Lim Inf(prom)</th>
                                 <td><span id="varianza_lim_superior"></span></td>
                             </tr>
                             <tr>
-                                <th>Decisión</th>
+                                <th> Desición</th>
                                 <td><span id="varianza_decision"></span></td>
                             </tr>
                         </thead>
@@ -361,7 +369,7 @@
                                 <td><span id="corridas_num_corridas"></span></td>
                             </tr>
                             <tr>
-                                <th>Media de corridas</th>
+                                <th>Media de Corridas</th>
                                 <td><span id="corridas_media"></span></td>
                             </tr>
                             <tr>
@@ -369,7 +377,7 @@
                                 <td><span id="corridas_varianza"></span></td>
                             </tr>
                             <tr>
-                                <th>Estadistico Zo</th>
+                                <th>Est Zo</th>
                                 <td><span id="corridas_estadistico"></span></td>
                             </tr>
                             <tr>
@@ -381,7 +389,7 @@
                                 <td><span id="corridas_zalpha"></span></td>
                             </tr>
                             <tr>
-                                <th>Desicion</th>
+                                <th> Desición</th>
                                 <td><span id="corridas_desicion"></span></td>
                             </tr>
                         </thead>

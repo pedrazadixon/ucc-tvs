@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/png" href="../assets/icon.png">
 
-  <title>Prueba chi-cuadrado (normal) | UCC</title>
+  <title>Prueba chi-cuadrado (Exponencial) | UCC</title>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
@@ -101,10 +101,10 @@
                 <a class="dropdown-item" href="prueba-poker.html">Prueba de poker</a>
               </li>
               <li>
-                <a class="dropdown-item" href="prueba-chi-cuadrado-normal.html">Chi-cuadrado (normal)</a>
+                <a class="dropdown-item" href="prueba-chi-cuadrado-normal.html">Chi-Cuadrado (normal)</a>
               </li>
               <li>
-                <a class="dropdown-item" href="prueba-chi-cuadrado-exponencial.html">Chi-squared test (Exponencial)</a>
+                <a class="dropdown-item" href="prueba-chi-cuadrado-exponencial.html">Chi-Cuadrado (Exponencial)</a>
               </li>
             </ul>
           </li>
@@ -132,6 +132,14 @@
   </nav>
 
   <div class="row h-100 m-3">
+
+    <div class="col-12">
+        <h5>Prueba de <b>Chi-Cuadrado (Exponencial)</b></h5>
+        <p>La distribución ji-cuadrado tiene muchas aplicaciones en inferencia estadística, por ejemplo en el test ji-cuadrado y en la estimación de varianzas. También está involucrada en el problema de estimar la media de una población normalmente distribuida y en el problema de estimar la pendiente de una recta de regresión lineal, cuando  Para k = 2 la distribución es una distribución exponencial. La distribución chi cuadrada desempeña un papel fundamental en la inferencia estadística. Tiene una aplicación considerable tanto en la metodología como en la teoría, es utilizado para realizar la prueba de bondad de Ajuste!!</p>
+    </div>
+
+    <hr>
+
     <div class="col-2">
 
         <!-- <div class="mb-3">
@@ -386,7 +394,7 @@
                                     <td><span id="total_fe"></span></td>
                                 </tr>
                                 <tr>
-                                    <th>Total Ji- Calculado</th>
+                                    <th>Total Ji-Calculado</th>
                                     <td><span id="total_ji_calculada"></span></td>
                                 </tr>
                                 <tr>
@@ -394,7 +402,7 @@
                                     <td> </td>
                                 </tr>
                                 <tr>
-                                    <th>Grados de libertad</th>
+                                    <th> Grados de libertad</th>
                                     <td><span id="total_grados_lib"></span></td>
                                 </tr>
                                 <tr>
@@ -402,11 +410,11 @@
                                     <td><span id="total_alpha"></span></td>
                                 </tr>
                                 <tr>
-                                    <th>Ji teórico</th>
+                                    <th>Ji-teórico</th>
                                     <td><span id="total_jiteorico"></span></td>
                                 </tr>
                                 <tr>
-                                    <th>Decisión</th>
+                                    <th>Desición</th>
                                     <td><span id="total_decision"></span></td>
                                 </tr>
                             </thead>
@@ -462,18 +470,7 @@
         var desviacion_estandar = jStat.stdev(matriz);
         var lambda = (1 / media);
 
-        /*    console.log("matriz: ",matriz);
-           console.log("total_datos: ",total_datos);
-           console.log("regla_de_sturges: ",regla_de_sturges);
-           console.log("intervalos: ",intervalos);
-           console.log("minimo: ",minimo);
-           console.log("maximo: ",maximo);
-           console.log("rango: ",rango);
-           console.log("amplitud_del_intervalo: ",amplitud_del_intervalo);
-           console.log("media: ",media);
-           console.log("desviacion_estandar: ",desviacion_estandar);
-           console.log("lambda: ",lambda); */
-
+       
 
         // calculo freciencas observadas para cada intervalo
         t_resultados = [];
@@ -521,7 +518,7 @@
         acom_intervalo = 0;
         acom_fo = 0;
         acom_fe = 0
-        acom_estadistico = [];
+        acom_estadistico = 0;
         for (let intervalo = 0; intervalo < t_resultados.length; intervalo++) {
             if (t_resultados[intervalo].fe >= 5) {
                 acom_intervalo = acom_intervalo + 1;
@@ -529,16 +526,25 @@
             } else {
                 acom_fo = acom_fo + t_resultados[intervalo].fo;
                 acom_fe = acom_fe + t_resultados[intervalo].fe;
+                acom_estadistico = ((acom_fo - acom_fe) ** 2) / acom_fe;
+                t_resultados[acom_intervalo].ji_estadistico = acom_estadistico;
+                t_resultados[acom_intervalo].fo = acom_fo;
+                t_resultados[acom_intervalo].fe = acom_fe; 
             }
         }
-        t_resultados[acom_intervalo].fo = acom_fo;
-        t_resultados[acom_intervalo].fe = acom_fe;
-
-        acom_estadistico = ((acom_fo - acom_fe) ** 2) / acom_fe;
-        t_resultados[acom_intervalo].ji_estadistico = acom_estadistico;
-
-
-
+        
+        
+        var val_alpha = parseFloat($('#val-alpha').val().trim().replace(",", "."));
+        if(t_resultados.length != acom_intervalo){
+            acom_intervalo = acom_intervalo+1      
+            var gradoslib =  (acom_intervalo-2)
+            var ji_teorico = jStat.chisquare.inv(val_alpha, gradoslib);  
+        }else{
+            var gradoslib =  (t_resultados.length - 1) 
+            var ji_teorico = jStat.chisquare.inv(val_alpha, gradoslib);
+        }
+           
+       
 
         // INTERFAZ GRAFICA
         $("#intervalos").empty();
@@ -592,16 +598,19 @@
         var cell1 = row.insertCell(1);
         var cell2 = row.insertCell(2);
         var cell3 = row.insertCell(3);
-        cell0.innerHTML = "<b>Intervalo.</b>";
+        cell0.innerHTML = "<b>Cat.</b>";
         cell1.innerHTML = "<b>FO</b>";
         cell2.innerHTML = "<b>FE</b>";
-        cell3.innerHTML = "<b>Ji Estadistico</b>";
+        cell3.innerHTML = "<b>Ji Est.</b>";
+
+
+ 
 
         acomu_fe_total = 0;
         acomu_fo_total = 0;
         acomu_ji_estadistico = 0;
         h_fe_data = [];
-        for (let i = 0; i < acom_intervalo + 1; i++) {
+        for (let i = 0; i < acom_intervalo; i++) {
             var row = table.insertRow(i + 1);
             var cell0 = row.insertCell(0);
             var cell1 = row.insertCell(1);
@@ -618,13 +627,12 @@
             h_fe_data.push(t_resultados[i].fe)
         }
 
-        var val_alpha = parseFloat($('#val-alpha').val().trim().replace(",", "."));
-        var ji_teorico = jStat.chisquare.inv(val_alpha, (t_resultados.length - acom_intervalo));
-        var desicion = (acomu_ji_estadistico > ji_teorico) ? "Se acepta" : "Se rechaza";
+       
+        var desicion = (acomu_ji_estadistico > ji_teorico) ? "Se acepta" : " Se rechaza";
         $("#total_fo").text(acomu_fo_total);
         $("#total_fe").text(acomu_fe_total);
         $("#total_ji_calculada").text(acomu_ji_estadistico);
-        $("#total_grados_lib").text((t_resultados.length - acom_intervalo));
+        $("#total_grados_lib").text(gradoslib);
         $("#total_alpha").text(val_alpha);
         $("#total_jiteorico").text(ji_teorico);
         $("#total_decision").text(desicion);

@@ -101,10 +101,10 @@
                 <a class="dropdown-item" href="prueba-poker.html">Prueba de poker</a>
               </li>
               <li>
-                <a class="dropdown-item" href="prueba-chi-cuadrado-normal.html">Chi-cuadrado (normal)</a>
+                <a class="dropdown-item" href="prueba-chi-cuadrado-normal.html">Chi-Cuadrado (normal)</a>
               </li>
               <li>
-                <a class="dropdown-item" href="prueba-chi-cuadrado-exponencial.html">Chi-squared test (Exponencial)</a>
+                <a class="dropdown-item" href="prueba-chi-cuadrado-exponencial.html">Chi-Cuadrado (Exponencial)</a>
               </li>
             </ul>
           </li>
@@ -190,8 +190,8 @@
             var cant_decimales = parseInt($('#cant-decimales').val().trim());
             var cant_aleatorios = parseInt($('#cant-numeros').val().trim());
 
-            var val_n = parseFloat($('#val-mu').val().trim());
-            var val_p = parseFloat($('#val-sigma').val().trim());
+            var val_n = parseFloat($('#val-n').val().trim());
+            var val_p = parseFloat($('#val-p').val().trim());
 
             randomArray = _lib_.unirand.binomial(val_n, val_p).distributionSync(cant_aleatorios);
 
