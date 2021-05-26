@@ -1,13 +1,20 @@
 ---
 layout: default
-title: Prueba de Poker
 languages:
 - en
 - es
-subset: index
+subset: prueba_mvc
 ---
 
 <div class="row h-100 m-3">
+
+    <div class="col-12">
+        <h5>{% t 'layout.sub_title_test' %} <b>{% t 'layout.prueba_mvc' %}</b></h5>
+        <p>{% t 'sumary' %}</p>
+        
+    </div>
+
+
     <div class="col-2">
         <div class="row" style="min-height: 400px">
             <textarea id="numeros_aleatorios" class="min-vh-50">
@@ -116,7 +123,7 @@ subset: index
 
         <div class="row mt-3">
             <button class="btn btn-primary" onclick="ejecutarPrueba()">
-                Ejecutar
+                {% t 'layout.run' %}
             </button>
         </div>
     </div>
@@ -125,7 +132,7 @@ subset: index
         <div class="row m-3">
             <div class="card mt-2 col-3 m-3">
                 <div class="card-body">
-                    <h3>Prueba de Media</h3>
+                    <h3>{% t 'layout.mean_test' %}</h3>
                     <table>
                         <thead>
                             <tr>
@@ -137,11 +144,11 @@ subset: index
                                 <td><span id="media_h1"></span></td>
                             </tr>
                             <tr>
-                                <th>Promedio</th>
+                                <th> {% t 'layout.average' %}</th>
                                 <td><span id="media_promedio"></span></td>
                             </tr>
                             <tr>
-                                <th>Cantidad numeros</th>
+                                <th> {% t 'layout.number_of_numbers' %}</th>
                                 <td><span id="media_cantidad_num"></span></td>
                             </tr>
                             <tr>
@@ -153,15 +160,15 @@ subset: index
                                 <td><span id="media_zalpha"></span></td>
                             </tr>
                             <tr>
-                                <th>Lim Superior(prom)</th>
+                                <th>Lim Sup(prom)</th>
                                 <td><span id="media_lim_superior"></span></td>
                             </tr>
                             <tr>
-                                <th>Lim Inferior (prom)</th>
+                                <th>Lim Inf(prom)</th>
                                 <td><span id="media_lim_inferior"></span></td>
                             </tr>
                             <tr>
-                                <th>Decisión</th>
+                                <th> {% t 'layout.desicion' %}</th>
                                 <td><span id="media_decision"></span></td>
                             </tr>
                         </thead>
@@ -173,7 +180,7 @@ subset: index
 
             <div class="card mt-2 col-4 m-3">
                 <div class="card-body">
-                    <h3>Prueba de Varianza</h3>
+                    <h3>{% t 'layout.test_of_variance' %}</h3>
                     <table>
                         <thead>
                             <tr>
@@ -185,11 +192,11 @@ subset: index
                                 <td><span id="varianza_h1"></span></td>
                             </tr>
                             <tr>
-                                <th>Promedio</th>
+                                <th>{% t 'layout.average' %}</th>
                                 <td><span id="varianza_promedio"></span></td>
                             </tr>
                             <tr>
-                                <th>Cantidad numeros</th>
+                                <th>{% t 'layout.number_of_numbers' %}</th>
                                 <td><span id="varianza_cantidad_num"></span></td>
                             </tr>
                             <tr>
@@ -205,15 +212,15 @@ subset: index
                                 <td><span id="varianza_1jialpha"></span></td>
                             </tr>
                             <tr>
-                                <th>Lim Superior(prom)</th>
+                                <th>Lim Sup(prom)</th>
                                 <td><span id="varianza_lim_inferior"></span></td>
                             </tr>
                             <tr>
-                                <th>Lim Inferior (prom)</th>
+                                <th>Lim Inf(prom)</th>
                                 <td><span id="varianza_lim_superior"></span></td>
                             </tr>
                             <tr>
-                                <th>Decisión</th>
+                                <th> {% t 'layout.desicion' %}</th>
                                 <td><span id="varianza_decision"></span></td>
                             </tr>
                         </thead>
@@ -225,27 +232,27 @@ subset: index
 
             <div class="card mt-2 col-3 m-3">
                 <div class="card-body">
-                    <h3>Prueba de Corridas</h3>
+                    <h3>{% t 'layout.run_test' %}</h3>
                     <table>
                         <thead>
                             <tr>
-                                <th>Datos</th>
+                                <th>{% t 'layout.data' %}</th>
                                 <td><span id="corridas_datos"></span></td>
                             </tr>
                             <tr>
-                                <th>Numero de corridas Co</th>
+                                <th>{% t 'layout.number_runs' %}</th>
                                 <td><span id="corridas_num_corridas"></span></td>
                             </tr>
                             <tr>
-                                <th>Media de corridas</th>
+                                <th>{% t 'layout.average_number_of_runs' %}</th>
                                 <td><span id="corridas_media"></span></td>
                             </tr>
                             <tr>
-                                <th>Varianza de corridas</th>
+                                <th>{% t 'layout.run_variance' %}</th>
                                 <td><span id="corridas_varianza"></span></td>
                             </tr>
                             <tr>
-                                <th>Estadistico Zo</th>
+                                <th>Est Zo</th>
                                 <td><span id="corridas_estadistico"></span></td>
                             </tr>
                             <tr>
@@ -257,7 +264,7 @@ subset: index
                                 <td><span id="corridas_zalpha"></span></td>
                             </tr>
                             <tr>
-                                <th>Desicion</th>
+                                <th> {% t 'layout.desicion' %}</th>
                                 <td><span id="corridas_desicion"></span></td>
                             </tr>
                         </thead>

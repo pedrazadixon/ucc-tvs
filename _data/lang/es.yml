@@ -16,6 +16,14 @@ layout:
   max_value: Valor max.
   min_value: Valor min.
   optional: Opcional
+  average: Promedio
+  number_of_numbers: Cantidad de Numeros
+  number_runs: Numero de corridas Co
+  average_number_of_runs: Media de Corridas
+  mean_test: Prueba de Media
+  test_of_variance: Prueba de Varianza
+  run_test: Prueba de Corridas
+  run_variance: Varianza de corridas
   chi_squared_test: Chi-Cuadrado (normal)
   chi_squared_test_expo: Chi-Cuadrado (Exponencial)
   data: Datos
@@ -32,13 +40,14 @@ layout:
   poisson_distribution: Distribución poisson
   triangular_distribution: Distribución triangular
   sub_title_prepend: Generador de números aleatorios para una
-  sub_title_test: Prueba
+  sub_title_test: Prueba de
   accepted: Se acepta
   rejected: Se rechaza
   degrees_of_freedom: Grados de libertad
   ji_calculated: Ji-Calculado
   ji_theoretical: Ji-teórico
   desicion: Desición
+  prueba_mvc: Media, Varianza y Corridas
 index:
   title: Inicio
   suggestion: Use el menu superior para seleccionar una opción.
@@ -85,3 +94,6 @@ aleatorios_triangular:
 prueba_chi_cuadrado_exponencial:
   title: Prueba chi-cuadrado (Exponencial)
   sumary: La distribución ji-cuadrado tiene muchas aplicaciones en inferencia estadística, por ejemplo en el test ji-cuadrado y en la estimación de varianzas. También está involucrada en el problema de estimar la media de una población normalmente distribuida y en el problema de estimar la pendiente de una recta de regresión lineal, cuando  Para k = 2 la distribución es una distribución exponencial. La distribución chi cuadrada desempeña un papel fundamental en la inferencia estadística. Tiene una aplicación considerable tanto en la metodología como en la teoría, es utilizado para realizar la prueba de bondad de Ajuste!!
+prueba_mvc:
+  title: Prueba de MVC
+  sumary: <b>Medias:</b> Nos permite contrastar hipótesis sobre igualdad de medias para muestras relacionadas. Se considera una población de diferencias con media µD, resultado de restar las puntuaciones de un mismo grupo en dos variables diferentes o en la misma variable en dos momentos diferentes.<br> <b>Carianza:</b> Es el concepto de regresión lineal, cuya funcionalidad amplía. Así, un análisis de la varianza permite determinar, por ejemplo, si diferentes tratamientos médicos (es decir, un grupo de más de dos tratamientos) muestran diferencias significativas en sus resultados o si por el contrario puede suponerse que sus medias poblacionales no difieren. De este modo el análisis de la varianza permite superar las limitaciones de hacer contrastes bilaterales por parejas entre todos los tratamientos posibles, lo que sería un mal método para determinar si un conjunto de variables con n > 2 difieren entre sí.  <br><b>Corridas:</b> El número observado de corridas es el número de grupos de observaciones que están por encima o por debajo del criterio de comparación, K. Minitab utiliza los criterios de comparación como un valor que usted especifica o la media predeterminada de las observaciones. El número de corridas de la muestra ayuda a determinar si la muestra es aleatoria.

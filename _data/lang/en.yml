@@ -16,6 +16,14 @@ layout:
   max_value: Max. value
   min_value: Min. value
   optional: Optional
+  average: Average
+  number_of_numbers: Number of numbers
+  number_runs: Numbers of runs
+  average_number_of_runs: Average number of runs
+  mean_test: Mean Test
+  test_of_variance: Test of Variance
+  run_test: Run Test
+  run_variance: Run variance
   chi_squared_test: Chi-Squared test (normal)
   chi_squared_test_expo: Chi-Squared test (exponential)
   data: Data
@@ -32,13 +40,14 @@ layout:
   poisson_distribution: Poisson distribution
   triangular_distribution: Triangular distribution
   sub_title_prepend: Random number generator for a
-  sub_title_test: Test
+  sub_title_test: Test of
   accepted: Is Accepted
   rejected: Is rejected
   degrees_of_freedom: Degrees of freedom
   ji_calculated: Ji-Calculated
   ji_theoretical: Ji-theoretical
   desicion: Desicion
+  prueba_mvc: Mean, Variance and Runs
 index:
   title: Home
   suggestion: Use the top menu to select an option.
@@ -85,3 +94,7 @@ aleatorios_triangular:
 prueba_chi_cuadrado_exponencial:
   title:  Chi-squared test (Exponencial)
   sumary: The chi-square distribution has many applications in statistical inference, for example in the chi-square test and in the estimation of variances. It is also involved in the problem of estimating the mean of a normally distributed population and in the problem of estimating the slope of a linear regression line, when For k = 2 the distribution is an exponential distribution. The chi-square distribution plays a critical role in statistical inference. It has a considerable application both in methodology and in theory, it is used to perform the Goodness of Fit test !!
+
+prueba_mvc:
+  title: Prueba de Medias Muestrales
+  sumary: <b>Means:</b> It allows us to test hypotheses about equality of means for related samples. A population of differences with mean µD is considered, the result of subtracting the scores of the same group in two different variables or in the same variable at two different moments. <br> <b>Carianza:</b> It is the concept of regression linear, whose functionality extends. Thus, an analysis of variance makes it possible to determine, for example, if different medical treatments (that is, a group of more than two treatments) show significant differences in their results or if, on the contrary, it can be assumed that their population means do not differ. In this way, the analysis of variance makes it possible to overcome the limitations of making bilateral pairwise contrasts between all the possible treatments, which would be a poor method to determine whether a set of variables with n > 2 differ from each other. <br> <b>Runs:</b> The observed number of runs is the number of groups of observations that are above or below the comparison criteria, K. Minitab uses the comparison criteria as a value that you specify or the default mean of the observations. The number of sample runs helps determine if the sample is random.
