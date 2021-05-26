@@ -92,9 +92,15 @@ aleatorios_triangular:
   title: Triangular
   sumary: In probability theory and statistics, the triangular distribution is a continuous probability distribution with lower limit a, upper limit b and mode c, where a < b and a ≤ c ≤ b.
 prueba_chi_cuadrado_exponencial:
-  title:  Chi-squared test (Exponencial)
+  title: Chi-squared test (Exponencial)
   sumary: The chi-square distribution has many applications in statistical inference, for example in the chi-square test and in the estimation of variances. It is also involved in the problem of estimating the mean of a normally distributed population and in the problem of estimating the slope of a linear regression line, when For k = 2 the distribution is an exponential distribution. The chi-square distribution plays a critical role in statistical inference. It has a considerable application both in methodology and in theory, it is used to perform the Goodness of Fit test !!
 
 prueba_mvc:
   title: Prueba de Medias Muestrales
   sumary: <b>Means:</b> It allows us to test hypotheses about equality of means for related samples. A population of differences with mean µD is considered, the result of subtracting the scores of the same group in two different variables or in the same variable at two different moments. <br> <b>Carianza:</b> It is the concept of regression linear, whose functionality extends. Thus, an analysis of variance makes it possible to determine, for example, if different medical treatments (that is, a group of more than two treatments) show significant differences in their results or if, on the contrary, it can be assumed that their population means do not differ. In this way, the analysis of variance makes it possible to overcome the limitations of making bilateral pairwise contrasts between all the possible treatments, which would be a poor method to determine whether a set of variables with n > 2 differ from each other. <br> <b>Runs:</b> The observed number of runs is the number of groups of observations that are above or below the comparison criteria, K. Minitab uses the comparison criteria as a value that you specify or the default mean of the observations. The number of sample runs helps determine if the sample is random.
+prueba_poker:
+  title: Poker Test
+  sumary: This test examines the individual digits of the generated pseudo-random number. The way this test is performed is by taking decimal numbers with 5 digits at a time and classifying them as; Pair, two pairs, third, poker quintile, poker and all different. The poker test can be performed on r i numbers with three, four and five decimal places.
+prueba_series:
+  title: Test Series
+  sumary: Series test. Measures the correlation between adjacent elements in a sequence of numbers random. The random numbers must not contain any conceivable pattern. Obviously one can conceive a large number of possible patterns between numbers, and a special test may be created to detect each particular pattern. It is not recommended or practical to do all tests to verify the reliability of the random number generator. You should compare the cost of performing these tests with the cost of resulting from generator imperfection in a current simulation project.
