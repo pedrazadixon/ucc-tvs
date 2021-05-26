@@ -413,10 +413,10 @@ subset: prueba_chi_cuadrado_exponencial
         if(t_resultados.length != acom_intervalo){
             acom_intervalo = acom_intervalo+1      
             var gradoslib =  (acom_intervalo-2)
-            var ji_teorico = jStat.chisquare.inv(val_alpha, gradoslib);  
+            var ji_teorico = jStat.chisquare.inv((1-val_alpha), gradoslib);  
         }else{
             var gradoslib =  (t_resultados.length - 1) 
-            var ji_teorico = jStat.chisquare.inv(val_alpha, gradoslib);
+            var ji_teorico = jStat.chisquare.inv((1-val_alpha), gradoslib);
         }
            
        
