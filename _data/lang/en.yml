@@ -9,7 +9,7 @@ layout:
   home: Home
   confidence_interval: Confidence interval
   ramdom_numbers: Ramdom numbers
-  goodness_of_fit_test: Goodness of fit
+  goodness_of_fit_test: Goodness of fit tests
   random_numbers: Random numbers
   precision: Precision
   results: Results
@@ -49,6 +49,7 @@ layout:
   ji_theoretical: Ji-theoretical
   desicion: Desicion
   prueba_mvc: Mean, Variance and Runs
+  ramdom_numbers_menu: Ramdom numbers Generators 
 index:
   title: Home
   suggestion: Use the top menu to select an option.

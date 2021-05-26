@@ -9,7 +9,7 @@ layout:
   home: Inicio
   confidence_interval: Intervalo de confianza
   ramdom_numbers: Números aleatorios
-  goodness_of_fit_test: Bondad de ajuste
+  goodness_of_fit_test: Pruebas de bondad de ajuste
   random_numbers: Números aleatorios
   precision: Cant. decimales
   results: Resultados
@@ -49,6 +49,7 @@ layout:
   ji_theoretical: Ji-teórico
   desicion: Desición
   prueba_mvc: Media, Varianza y Corridas
+  ramdom_numbers_menu: Generar números aleatorios
 index:
   title: Inicio
   suggestion: Use el menu superior para seleccionar una opción.
