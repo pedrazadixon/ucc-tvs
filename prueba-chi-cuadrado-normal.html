@@ -15,7 +15,7 @@ subset: prueba_chi_cuadrado_normal
 
         <div class="mb-3">
             <label class="form-label">alpha</label>
-            <input type="number" class="form-control form-control-sm" id="val-alpha" value="0.05" min="0" max="1" required />
+            <input type="number" class="form-control form-control-sm" id="val-alpha" value="0.05" min="0" max="1" step="0.01" required />
         </div>
 
         <div class="mb-3">
@@ -80,14 +80,14 @@ subset: prueba_chi_cuadrado_normal
                 </div>
             </div>
 
-            <div class="col-5">
+            <div class="col-6">
                 <div class="card mt-2">
                     <div class="card-body">
                         <table class="table table-sm" id="intervalos_complemento"></table>
                     </div>
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-6">
                 <div class="card mt-2">
                     <div class=card-body">
                         <table class="table table-sm">
@@ -336,7 +336,7 @@ subset: prueba_chi_cuadrado_normal
 
         grado_lib = t_resultados.length -3; 
 
-        var ji_teorico = jStat.chisquare.inv(val_alpha, grado_lib);
+        var ji_teorico = jStat.chisquare.inv((1-val_alpha), grado_lib);
 
         var desicion = (total_JI > ji_teorico) ? "{% t 'layout.accepted' %}" : " {% t 'layout.rejected' %}";
         $("#total_fo").text(total_FO);
